@@ -6,4 +6,6 @@
     <string name="title_notifications">Notifications</string>
     <string name="iniciar">Iniciar</string>
     <string name="titleInit">titleInit</string>
+    <string name="siguiente">Siguiente</string>
+    <string name="empezar_de_nuevo">Empezar de nuevo</string>
 </resources>
