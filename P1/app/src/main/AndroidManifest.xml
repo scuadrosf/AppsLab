@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Trivial"
         tools:targetApi="33">
         <activity
-            android:name=".InitialLayout"
+            android:name=".InitialActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

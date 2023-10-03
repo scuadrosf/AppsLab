@@ -15,6 +15,7 @@
         android:text="¿Pregunta?"
         app:layout_constraintBottom_toTopOf="@+id/option1RadioButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,6 +52,7 @@
         android:text="Opción 3"
         app:layout_constraintBottom_toTopOf="@+id/option4RadioButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/option2RadioButton" />
 
@@ -71,15 +73,10 @@
         android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="195dp"
-        android:layout_marginBottom="385dp"
+        android:layout_marginTop="136dp"
+        android:backgroundTint="@color/purplebutton"
         android:text="Siguiente"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/option4RadioButton"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="149dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

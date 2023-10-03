@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Agregar más preguntas según sea necesario
 
-        showQuestion();
+        showQuestionRadioButton();
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 checkAnswer();
                 currentQuestionIndex++;
                 if (currentQuestionIndex < questions.size()) {
-                    showQuestion();
+                    showQuestionRadioButton();
                 } else {
                     // Juego terminado, mostrar puntuación
                     Toast.makeText(MainActivity.this, "Puntuación FINAL: " + score, Toast.LENGTH_SHORT).show();
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void showQuestion() {
+    private void showQuestionRadioButton() {
         Question question = questions.get(currentQuestionIndex);
         questionTextView.setText(question.getQuestion());
         String[] options = question.getOptions();
@@ -76,11 +76,11 @@ public class MainActivity extends AppCompatActivity {
         if (selectedAnswerIndex == correctAnswerIndex) {
             // Respuesta correcta
             score += 3;
-            Toast.makeText(this, "¡Correcto!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Puntuación: "+score, Toast.LENGTH_SHORT).show();
         } else {
             // Respuesta incorrecta
             score -= 2;
-            Toast.makeText(this, "Incorrecto. La respuesta correcta es: " + question.getOptions()[correctAnswerIndex], Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Incorrecto. Puntuación: "+score, Toast.LENGTH_SHORT).show();
         }
     }
 
