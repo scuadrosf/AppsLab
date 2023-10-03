@@ -3,6 +3,7 @@ package com.example.trivial;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     showQuestion();
                 } else {
                     // Juego terminado, mostrar puntuación
-                    Toast.makeText(MainActivity.this, "Puntuación: " + score, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Puntuación FINAL: " + score, Toast.LENGTH_SHORT).show();
                     // Puedes reiniciar el juego aquí si es necesario
                 }
             }
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         if (selectedAnswerIndex == correctAnswerIndex) {
             // Respuesta correcta
             score += 3;
-            Toast.makeText(this, score, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "¡Correcto!", Toast.LENGTH_SHORT).show();
         } else {
             // Respuesta incorrecta
             score -= 2;
@@ -95,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return -1; // Ninguna opción seleccionada
     }
+
 
 
 
