@@ -1,5 +1,6 @@
 package com.example.trivial;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,10 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Question> questions;
     private int currentQuestionIndex = 0;
     private int score = 0;
+
+    public int getScore(){
+        return score;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +69,8 @@ public class MainActivity extends AppCompatActivity {
 
                     showQuestionRadioButton();
                 } else {
-                    // Juego terminado, mostrar puntuación
                     Toast.makeText(MainActivity.this, "Puntuación FINAL: " + score, Toast.LENGTH_SHORT).show();
-                    // Puedes reiniciar el juego aquí si es necesario
+                    startFinal(view);
                 }
             }
         });
@@ -104,4 +108,12 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "¡Incorrecto! Puntuación: " + score, Toast.LENGTH_SHORT).show();
         }
     }
+
+    private void startFinal(View view){
+        Intent intent = new Intent(this, FinalActivity.class);
+        intent.putExtra("SCORE_FINAL", score);
+        startActivity(intent);
+    }
+
+
 }

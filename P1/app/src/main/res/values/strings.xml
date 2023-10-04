@@ -8,4 +8,6 @@
     <string name="titleInit">titleInit</string>
     <string name="siguiente">Siguiente</string>
     <string name="empezar_de_nuevo">Empezar de nuevo</string>
+    <string name="puntuaci_n_0">Puntuación: 0</string>
+    <string name="volver_a_inicio">Volver a Inicio</string>
 </resources>
