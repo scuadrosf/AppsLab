@@ -20,7 +20,7 @@
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.857"
+        app:layout_constraintVertical_bias="0.976"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -58,8 +58,8 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="234dp"
-        android:layout_height="319dp"
+        android:layout_width="337dp"
+        android:layout_height="429dp"
         android:layout_marginStart="105dp"
         android:layout_marginEnd="105dp"
         android:orientation="vertical"
@@ -120,26 +120,25 @@
 
         <ImageButton
             android:id="@+id/imageButton2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="1px"
+            android:layout_height="100dp"
+            android:layout_margin="16dp"
+            android:scaleType="fitXY"
             app:srcCompat="@drawable/alemania" />
 
-        <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/argentina" />
 
         <ImageButton
             android:id="@+id/imageButton4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="1px"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"
             app:srcCompat="@drawable/brasil" />
 
         <ImageButton
             android:id="@+id/imageButton5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="1px"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"
             app:srcCompat="@drawable/italia" />
 
     </RadioGroup>

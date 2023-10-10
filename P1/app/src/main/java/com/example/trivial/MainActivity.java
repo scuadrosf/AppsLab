@@ -92,9 +92,10 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i = 0; i < options.length; i++) {
             ImageButton imageButton = new ImageButton(this);
-            imageButton.findViewById(R.id.imageButton2);
+            //imageButton.findViewById(R.id.imageButton2);
             imageButton.setImageResource(options[i]);
-            imageButton.setScaleType(ImageView.ScaleType.FIT_CENTER); // Ajusta la imagen al tamaño del ImageButton
+            imageButton.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        // Ajusta la imagen al tamaño del ImageButton
             //imageButton.setBackgroundResource(android.R.drawable.btn_border); // Establece un borde para el ImageButton
             int finalI = i;
             imageButton.setOnClickListener(new View.OnClickListener() {
