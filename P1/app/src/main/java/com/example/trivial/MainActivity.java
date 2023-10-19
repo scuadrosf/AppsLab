@@ -80,6 +80,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        againButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Cierra todas las actividades anteriores
+                score = 0;
+                startActivity(intent);
+
+            }
+        });
     }
 
     private void showQuestionImage(){
@@ -87,16 +98,12 @@ public class MainActivity extends AppCompatActivity {
         questionTextView.setText(question.getQuestion());
         Integer[] options = (Integer[]) question.getOptions();
 
-        // Elimina las vistas existentes antes de agregar nuevas
         radioGroup.removeAllViews();
 
         for (int i = 0; i < options.length; i++) {
             ImageButton imageButton = new ImageButton(this);
-            //imageButton.findViewById(R.id.imageButton2);
             imageButton.setImageResource(options[i]);
             imageButton.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        // Ajusta la imagen al tamaño del ImageButton
-            //imageButton.setBackgroundResource(android.R.drawable.btn_border); // Establece un borde para el ImageButton
             int finalI = i;
             imageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
