@@ -66,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkAnswer();
+                if(currentQuestionIndex != 1)
+                    checkAnswer();
                 currentQuestionIndex++;
                 if (currentQuestionIndex < questions.size()) {
                     if(currentQuestionIndex == 1){
@@ -121,17 +122,13 @@ public class MainActivity extends AppCompatActivity {
 
         if (optionIndex == question.getCorrectAnswerIndex()) {
             score += 3;
-            // La opción seleccionada es una imagen y es la respuesta correcta
-            // Implementa la lógica para una respuesta correcta
-            // Por ejemplo, mostrar un mensaje indicando que la respuesta es correcta
-            Toast.makeText(this, "¡Respuesta correcta!", Toast.LENGTH_SHORT).show();
+
+            Toast.makeText(this, "¡Correcto! Puntuación: " + score, Toast.LENGTH_SHORT).show();
         } else {
             score -= 2;
             againButton.setVisibility(View.VISIBLE);
-            // La opción seleccionada es una imagen pero no es la respuesta correcta
-            // Implementa la lógica para una respuesta incorrecta
-            // Por ejemplo, mostrar un mensaje indicando que la respuesta es incorrecta
-            Toast.makeText(this, "Respuesta incorrecta. Intenta de nuevo.", Toast.LENGTH_SHORT).show();
+
+            Toast.makeText(this, "¡Incorrecto! Puntuación: " + score, Toast.LENGTH_SHORT).show();
         }
     }
 
