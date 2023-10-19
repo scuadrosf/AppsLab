@@ -38,9 +38,7 @@ public class MainActivity extends AppCompatActivity {
         nextButton = findViewById(R.id.nextButton);
         againButton = findViewById(R.id.againButton);
 
-        // Inicializar vistas y preguntas aquí (usando findViewById)
-
-        // Cargar preguntas
+        // Preguntas
         questions = new ArrayList<>();
         questions.add(new Question("¿Cuál es el país de origen del fútbol?", new String[]{"Inglaterra", "España", "Alemania", "Francia"}, 0,false));
         questions.add(new Question("¿Qué equipo ha ganado la Copa del Mundo más veces?", new Integer[]{R.drawable.alemania, R.drawable.argentina, R.drawable.brasil, R.drawable.italia}, 2, true));
@@ -54,11 +52,9 @@ public class MainActivity extends AppCompatActivity {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                // Manejar el evento de selección/deselección de los RadioButtons aquí
                 RadioButton selectedRadioButton = findViewById(checkedId);
                 if (selectedRadioButton != null) {
                     String selectedText = selectedRadioButton.getText().toString();
-                    // Puedes hacer algo con el texto seleccionado si es necesario
                 }
             }
         });
@@ -118,7 +114,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void handleImageOptionClick(int optionIndex) {
         Question question = questions.get(currentQuestionIndex);
-       // boolean[] isOptionImage = question.getIsOptionImage();
 
         if (optionIndex == question.getCorrectAnswerIndex()) {
             score += 3;
@@ -138,7 +133,6 @@ public class MainActivity extends AppCompatActivity {
         questionTextView.setText(question.getQuestion());
         String[] options = (String[]) question.getOptions();
 
-        // Elimina los RadioButton existentes antes de agregar nuevos
         radioGroup.removeAllViews();
 
         for (int i = 0; i < options.length; i++) {
