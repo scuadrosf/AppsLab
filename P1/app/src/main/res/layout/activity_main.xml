@@ -58,8 +58,9 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="337dp"
-        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_width="321dp"
+        android:layout_height="429dp"
         android:layout_marginStart="105dp"
         android:layout_marginEnd="105dp"
         android:orientation="vertical"
