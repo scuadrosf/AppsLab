@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
             RadioButton radioButton = new RadioButton(this);
             radioButton.setText(options[i]);
             radioGroup.addView(radioButton);
-        }*
+        }*/
 
         // Itera sobre los radio buttons y los crea añadiéndolos al RadioGroup
         for (RadioButton radioButton : radioButtons) {
