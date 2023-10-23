@@ -66,13 +66,12 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/nextButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionTextView"
-        app:layout_constraintVertical_bias="0.622">
+        app:layout_constraintVertical_bias="0.68">
 
         <RadioButton
-            android:id="@+id/option1RadioButton"
+            android:id="@+id/radioButton_0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -85,7 +84,7 @@
             app:layout_constraintTop_toBottomOf="@+id/questionTextView" />
 
         <RadioButton
-            android:id="@+id/option3RadioButton"
+            android:id="@+id/radioButton_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Opción 3"
@@ -95,7 +94,7 @@
             app:layout_constraintTop_toBottomOf="@+id/option2RadioButton" />
 
         <RadioButton
-            android:id="@+id/option2RadioButton"
+            android:id="@+id/radioButton_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="160dp"
@@ -107,7 +106,7 @@
             app:layout_constraintTop_toBottomOf="@+id/option1RadioButton" />
 
         <RadioButton
-            android:id="@+id/option4RadioButton"
+            android:id="@+id/radioButton_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="160dp"
@@ -120,28 +119,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/option3RadioButton" />
 
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="1px"
-            android:layout_height="100dp"
-            android:layout_margin="16dp"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/alemania" />
 
 
-        <ImageButton
-            android:id="@+id/imageButton4"
-            android:layout_width="1px"
-            android:layout_height="100dp"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/brasil" />
 
-        <ImageButton
-            android:id="@+id/imageButton5"
-            android:layout_width="1px"
-            android:layout_height="100dp"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/italia" />
+
 
     </RadioGroup>
 

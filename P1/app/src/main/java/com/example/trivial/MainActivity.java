@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private TextView questionTextView;
@@ -135,9 +136,22 @@ public class MainActivity extends AppCompatActivity {
 
         radioGroup.removeAllViews();
 
+        // Obtiene los radio buttons del XML
+        List<RadioButton> radioButtons = new ArrayList<>();
         for (int i = 0; i < options.length; i++) {
+            RadioButton radioButton = findViewById(getResources().getIdentifier("radioButton_" + i, "id", getPackageName()));
+            radioButtons.add(radioButton);
+        }
+
+        /*for (int i = 0; i < options.length; i++) {
             RadioButton radioButton = new RadioButton(this);
             radioButton.setText(options[i]);
+            radioGroup.addView(radioButton);
+        }*
+
+        // Itera sobre los radio buttons y los crea añadiéndolos al RadioGroup
+        for (RadioButton radioButton : radioButtons) {
+            radioButton.setText(options[radioButtons.indexOf(radioButton)]);
             radioGroup.addView(radioButton);
         }
     }
