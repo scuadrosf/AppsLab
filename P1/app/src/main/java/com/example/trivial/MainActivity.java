@@ -139,7 +139,8 @@ public class MainActivity extends AppCompatActivity {
         // Obtiene los radio buttons del XML
         List<RadioButton> radioButtons = new ArrayList<>();
         for (int i = 0; i < options.length; i++) {
-            RadioButton radioButton = findViewById(getResources().getIdentifier("radioButton_" + i, "id", getPackageName()));
+            RadioButton radioButton = new RadioButton(this);
+            radioButton.setId(getResources().getIdentifier("radioButton_" + i, "id", getPackageName()));
             radioButtons.add(radioButton);
         }
 
