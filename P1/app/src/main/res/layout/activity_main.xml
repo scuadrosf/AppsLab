@@ -1,4 +1,4 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,10 +8,14 @@
 
     <Button
         android:id="@+id/againButton"
-        android:layout_width="wrap_content"
+        android:layout_width="173dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginEnd="149dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="116dp"
+        android:layout_marginEnd="122dp"
+        android:layout_marginBottom="27dp"
         android:backgroundTint="@color/purplebutton"
         android:onClick="startTrivial"
         android:text="@string/empezar_de_nuevo"
@@ -42,12 +46,16 @@
 
     <Button
         android:id="@+id/nextButton"
-        android:layout_width="wrap_content"
+        android:layout_width="172dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginEnd="149dp"
-        android:layout_marginBottom="16dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="116dp"
+        android:layout_marginEnd="123dp"
+        android:layout_marginBottom="88dp"
         android:backgroundTint="@color/purplebutton"
+        android:rotationX="-0"
         android:text="@string/siguiente"
         app:layout_constraintBottom_toTopOf="@+id/againButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,12 +67,15 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="420dp"
+        android:layout_width="194dp"
+        android:layout_height="328dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="16dp"
+        android:layout_marginEnd="63dp"
         android:layout_marginRight="16dp"
+        android:layout_marginBottom="173dp"
         android:layout_weight="1"
-
         app:layout_constraintBottom_toTopOf="@+id/nextButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,12 +84,12 @@
 
         <RadioButton
             android:id="@+id/radioButton_0"
-            android:layout_width="100dp"
+            android:layout_width="102dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:gravity="center_horizontal"
+            android:minHeight="48dp"
             android:text="Opción 1"
-
             android:textSize="34sp"
             app:layout_constraintBottom_toTopOf="@+id/option2RadioButton"
             app:layout_constraintEnd_toEndOf="parent"
@@ -129,10 +140,6 @@
             app:layout_constraintTop_toBottomOf="@+id/option3RadioButton" />
 
 
-
-
-
-
     </RadioGroup>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

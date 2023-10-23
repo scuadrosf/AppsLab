@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
         radioGroup.removeAllViews();
 
-        // Obtiene los radio buttons del xml del activity
+        // Obtiene los radiobuttons del xml del activity
         List<RadioButton> radioButtons = new ArrayList<>();
         for (int i = 0; i < options.length; i++) {
             RadioButton radioButton = new RadioButton(this);
