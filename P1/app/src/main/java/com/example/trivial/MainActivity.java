@@ -3,6 +3,7 @@ package com.example.trivial;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -91,6 +92,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        showQuestionRadioButton();
+    }
+
     private void showQuestionImage(){
         Question question = questions.get(currentQuestionIndex);
         questionTextView.setText(question.getQuestion());
@@ -136,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
         radioGroup.removeAllViews();
 
-        // Obtiene los radio buttons del XML
+        // Obtiene los radio buttons del xml del activity
         List<RadioButton> radioButtons = new ArrayList<>();
         for (int i = 0; i < options.length; i++) {
             RadioButton radioButton = new RadioButton(this);
@@ -144,14 +152,10 @@ public class MainActivity extends AppCompatActivity {
             radioButtons.add(radioButton);
         }
 
-        /*for (int i = 0; i < options.length; i++) {
-            RadioButton radioButton = new RadioButton(this);
-            radioButton.setText(options[i]);
-            radioGroup.addView(radioButton);
-        }*/
-
         // Itera sobre los radio buttons y los crea añadiéndolos al RadioGroup
         for (RadioButton radioButton : radioButtons) {
+            radioButton.setGravity(Gravity.CENTER_HORIZONTAL);
+            radioButton.setPadding(16, 16, 16, 16);
             radioButton.setText(options[radioButtons.indexOf(radioButton)]);
             radioGroup.addView(radioButton);
         }
