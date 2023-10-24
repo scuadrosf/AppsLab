@@ -23,7 +23,8 @@ public class FinalActivity extends AppCompatActivity {
         }
 
         TextView scoreTextView = findViewById(R.id.scoreTextView);
-        scoreTextView.setText("Puntuación: " + finalScore);
+        String showPuntutation = "Puntuacion " + finalScore;
+        scoreTextView.setText(showPuntutation);
 
         Button backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {

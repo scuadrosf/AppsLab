@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundcolor"
     android:orientation="vertical">
 
 
@@ -30,14 +31,21 @@
 
     <TextView
         android:id="@+id/questionTextView"
-        android:layout_width="352dp"
-        android:layout_height="102dp"
-        android:layout_marginStart="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="125dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="45dp"
         android:layout_marginTop="56dp"
-        android:layout_marginEnd="31dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="550dp"
         android:gravity="center"
-        android:text="¿Pregunta?"
+        android:text="@string/pregunta"
+        android:textColor="@color/black"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:autoSizeMaxTextSize="24sp"
         app:autoSizeMinTextSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,17 +54,18 @@
 
     <Button
         android:id="@+id/nextButton"
-        android:layout_width="172dp"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="62dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="116dp"
-        android:layout_marginEnd="123dp"
+        android:layout_marginEnd="122dp"
         android:layout_marginBottom="88dp"
         android:backgroundTint="@color/purplebutton"
         android:rotationX="-0"
         android:text="@string/siguiente"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/againButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -67,15 +76,14 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="194dp"
-        android:layout_height="328dp"
+        android:layout_width="230dp"
+        android:layout_height="318dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="16dp"
-        android:layout_marginEnd="63dp"
+        android:layout_marginEnd="26dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="173dp"
-        android:layout_weight="1"
         app:layout_constraintBottom_toTopOf="@+id/nextButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,13 +92,13 @@
 
         <RadioButton
             android:id="@+id/radioButton_0"
-            android:layout_width="102dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="102dp"
             android:layout_weight="3"
             android:gravity="center_horizontal"
             android:minHeight="48dp"
-            android:text="Opción 1"
-            android:textSize="34sp"
+            android:text="@string/opcion_1"
+            android:textSize="22sp"
             app:layout_constraintBottom_toTopOf="@+id/option2RadioButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -98,13 +106,13 @@
 
         <RadioButton
             android:id="@+id/radioButton_1"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="102dp"
             android:layout_weight="3"
             android:gravity="center_horizontal"
-            android:text="Opción 3"
+            android:text="@string/opcion_3"
 
-            android:textSize="34sp"
+            android:textSize="22sp"
             app:layout_constraintBottom_toTopOf="@+id/option4RadioButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -112,13 +120,13 @@
 
         <RadioButton
             android:id="@+id/radioButton_2"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="102dp"
             android:layout_weight="3"
             android:gravity="center_horizontal"
-            android:text="Opción 2"
+            android:text="@string/opcion_2"
 
-            android:textSize="34sp"
+            android:textSize="22sp"
             app:layout_constraintBottom_toTopOf="@+id/option3RadioButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -126,20 +134,86 @@
 
         <RadioButton
             android:id="@+id/radioButton_3"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="102dp"
             android:layout_weight="3"
             android:gravity="center_horizontal"
-            android:text="Opción 4"
+            android:text="@string/opcion_4"
 
-            android:textSize="34sp"
+            android:textSize="22sp"
             app:layout_constraintBottom_toTopOf="@+id/nextButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/option3RadioButton" />
 
+        <!--
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="249dp"
+        android:layout_marginEnd="226dp"
+        android:layout_marginBottom="412dp"
+        android:contentDescription="@string/alemania"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/alemania" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="326dp"
+        android:layout_marginEnd="225dp"
+        android:layout_marginBottom="335dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/argentina"
+        android:contentDescription="@string/argentina" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="77dp"
+        android:layout_marginTop="406dp"
+        android:layout_marginEnd="224dp"
+        android:layout_marginBottom="255dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/brasil"
+        android:contentDescription="@string/brasil" />
+
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="486dp"
+        android:layout_marginEnd="223dp"
+        android:layout_marginBottom="175dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/italia"
+        android:contentDescription="@string/italia" />
+        -->
 
     </RadioGroup>
+
 
 </RelativeLayout>

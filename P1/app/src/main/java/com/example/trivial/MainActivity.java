@@ -1,7 +1,6 @@
 package com.example.trivial;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -26,10 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private int currentQuestionIndex = 0;
     private int score = 0;
 
-    public int getScore(){
-        return score;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,11 +37,11 @@ public class MainActivity extends AppCompatActivity {
 
         // Preguntas
         questions = new ArrayList<>();
-        questions.add(new Question("¿Cuál es el país de origen del fútbol?", new String[]{"Inglaterra", "España", "Alemania", "Francia"}, 0,false));
-        questions.add(new Question("¿Qué equipo ha ganado la Copa del Mundo más veces?", new Integer[]{R.drawable.alemania, R.drawable.argentina, R.drawable.brasil, R.drawable.italia}, 2, true));
-        questions.add(new Question("¿Qué Copa de Europa ganó el Real Madrid gracias a la volea de Zidane?", new String[]{"Séptima", "Novena", "Octava", "Décima"}, 1, false));
-        questions.add(new Question("¿Quién ha ganado más Balones de Oro en toda la historia?", new String[]{"Messi", "Cristiano Ronaldo", "Ronaldo Nazario", "Maradona"}, 0, false));
-        questions.add(new Question("¿Cuál es el equipo de fútbol más antiguo del mundo?", new String[]{"Manchester United FC", "Sheffield FC", "Sevilla FC", "CA Boca Juniors "}, 1, false));
+        questions.add(new Question("¿Cuál es el país de origen del fútbol?", new String[]{"Inglaterra", "España", "Alemania", "Francia"}, 0));
+        questions.add(new Question("¿Qué equipo ha ganado la Copa del Mundo más veces?", new Integer[]{R.drawable.alemania, R.drawable.argentina, R.drawable.brasil, R.drawable.italia}, 2));
+        questions.add(new Question("¿Qué Copa de Europa ganó el Real Madrid gracias a la volea de Zidane?", new String[]{"Séptima", "Novena", "Octava", "Décima"}, 1));
+        questions.add(new Question("¿Quién ha ganado más Balones de Oro en toda la historia?", new String[]{"Messi", "Cristiano Ronaldo", "Ronaldo Nazario", "Maradona"}, 0));
+        questions.add(new Question("¿Cuál es el equipo de fútbol más antiguo del mundo?", new String[]{"Manchester United", "Sheffield", "Sevilla", "Boca Juniors "}, 1));
 
 
         showQuestionRadioButton();
@@ -56,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton selectedRadioButton = findViewById(checkedId);
                 if (selectedRadioButton != null) {
-                    String selectedText = selectedRadioButton.getText().toString();
+                    selectedRadioButton.getText();
                 }
             }
         });
@@ -148,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
         List<RadioButton> radioButtons = new ArrayList<>();
         for (int i = 0; i < options.length; i++) {
             RadioButton radioButton = new RadioButton(this);
+            radioButton.setTextSize(22);
             radioButton.setId(getResources().getIdentifier("radioButton_" + i, "id", getPackageName()));
             radioButtons.add(radioButton);
         }

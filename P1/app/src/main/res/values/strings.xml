@@ -10,4 +10,13 @@
     <string name="empezar_de_nuevo">Empezar de nuevo</string>
     <string name="puntuaci_n_0">Puntuación: 0</string>
     <string name="volver_a_inicio">Volver a Inicio</string>
+    <string name="pregunta">¿Pregunta?</string>
+    <string name="opcion_1">Opción 1</string>
+    <string name="opcion_3">Opción 3</string>
+    <string name="opcion_2">Opción 2</string>
+    <string name="opcion_4">Opción 4</string>
+    <string name="alemania">alemania</string>
+    <string name="argentina">argentina</string>
+    <string name="brasil">brasil</string>
+    <string name="italia">italia</string>
 </resources>
