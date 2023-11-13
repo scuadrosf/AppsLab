@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Obtener la instancia de la barra de herramientas
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // Configurar el icono en el Toolbar
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         radioGroup = findViewById(R.id.radioGroup);
         questionTextView = findViewById(R.id.questionTextView);
