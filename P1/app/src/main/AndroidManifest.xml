@@ -13,6 +13,11 @@
         android:theme="@style/Theme.Trivial"
         tools:targetApi="33">
         <activity
+            android:name=".UserManualActivity"
+            android:exported="false"
+            android:label="@string/title_activity_user_manual"
+            android:theme="@style/Theme.Trivial" />
+        <activity
             android:name=".FinalActivity"
             android:exported="false">
             <meta-data
