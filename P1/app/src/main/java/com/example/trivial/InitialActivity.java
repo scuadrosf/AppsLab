@@ -11,26 +11,28 @@ import android.widget.ImageButton;
 public class InitialActivity extends AppCompatActivity {
 
     Button start;
-    ImageButton helpButton;
+    private Button helpButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial_layout);
         start = findViewById(R.id.buttonIniciar);
+
         helpButton = findViewById(R.id.helpButton);
 
-        helpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(InitialActivity.this, UserManualActivity.class);
-                startActivity(intent);
-            }
-        });
+
+
+
 
     }
     public void startTrivial(View view){
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void help (View view){
+        Intent intent = new Intent(this, UserManualActivity.class);
         startActivity(intent);
     }
 

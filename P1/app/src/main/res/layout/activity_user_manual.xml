@@ -1,33 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     tools:context=".UserManualActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="349dp"
+        android:layout_height="588dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="165dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="54dp"
+        android:text="¡Bienvenido al trivial futbolero! \n \n En la pantalla principal dispone de un botón en la parte inferior de la pantalla (&quot;Iniciar&quot;). \n \n Pulsando en él accederá a las distintas preguntas disponibles en el trivial. \n \n Una vez se acceda al trivial, se deben de ir contestando a las preguntas una a una. Cada acierto suma 3 puntos y cada error resta 2 puntos. \n \n Finalmente, trás contestar a la última pregunta llegará a la última pantalla en la que podrá ver su puntuación final.  \n \n Para volver a jugar deberá de pulsar el botón que aparece en la última pantalla (&quot;Volver a jugar&quot;)."
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <include layout="@layout/content_user_manual" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+    <Button
+        android:id="@+id/volver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="16dp"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        android:layout_marginTop="69dp"
+        android:onClick="goBack"
+        android:text="@string/volver"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.02" />
+</androidx.constraintlayout.widget.ConstraintLayout>
