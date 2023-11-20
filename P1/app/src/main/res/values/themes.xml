@@ -12,6 +12,15 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+        <!-- Permite la transicion entre Activities -->
+        <item name="android:windowActivityTransitions">true</item>
+
+        <!-- Define efectos de transicion E/S -->
+        <item name="android:windowEnterTransition">@android:transition/explode</item>
+        <item name="android:windowExitTransition">@android:transition/explode</item>
+        <item name="android:duration">3000</item>
+
     </style>
     <!-- Base application theme. -->
     <style name="Base.Theme.Trivial" parent="Theme.Material3.DayNight.NoActionBar">

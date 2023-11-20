@@ -1,6 +1,7 @@
 package com.example.trivial;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,19 +22,21 @@ public class InitialActivity extends AppCompatActivity {
 
         helpButton = findViewById(R.id.helpButton);
 
-
-
-
-
     }
+
+
+
+
+
     public void startTrivial(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
     public void help (View view){
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, helpButton, "transition_help_button");
         Intent intent = new Intent(this, UserManualActivity.class);
-        startActivity(intent);
+        startActivity(intent, options.toBundle());
     }
 
 }
