@@ -1,6 +1,7 @@
 package com.example.trivial;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -21,6 +22,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private TextView questionTextView;
     private RadioGroup radioGroup;
+    private MediaPlayer mediaPlayer;
     private Button nextButton, againButton;
     private ArrayList<Question> questions;
     private int currentQuestionIndex = 0;
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         questions.add(new Question("¿Quién ha ganado más Balones de Oro en toda la historia?", new String[]{"Messi", "Cristiano Ronaldo", "Ronaldo Nazario", "Maradona"}, 0));
         questions.add(new Question("¿Cuál es el equipo de fútbol más antiguo del mundo?", new String[]{"Manchester United", "Sheffield", "Sevilla", "Boca Juniors "}, 1));
 
-
+        playBackMusic();
         showQuestionRadioButton();
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -77,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
                         showQuestionRadioButton();
                     }
                 } else {
-                    Toast.makeText(MainActivity.this, "Puntuación FINAL: " + score, Toast.LENGTH_SHORT).show();
                     startFinal(view);
                 }
             }
@@ -129,12 +130,12 @@ public class MainActivity extends AppCompatActivity {
 
         if (optionIndex == question.getCorrectAnswerIndex()) {
             score += 3;
-
+            playCorrectSound();
             Toast.makeText(this, "¡Correcto! Puntuación: " + score, Toast.LENGTH_SHORT).show();
         } else {
             score -= 2;
             againButton.setVisibility(View.VISIBLE);
-
+            playErrorSound();
             Toast.makeText(this, "¡Incorrecto! Puntuación: " + score, Toast.LENGTH_SHORT).show();
         }
     }
@@ -172,11 +173,13 @@ public class MainActivity extends AppCompatActivity {
 
         if (selectedAnswerIndex == correctAnswerIndex) {
             // Respuesta correcta
+            playCorrectSound();
             score += 3;
             Toast.makeText(this, "¡Correcto! Puntuación: " + score, Toast.LENGTH_SHORT).show();
         } else {
             // Respuesta incorrecta
             score -= 2;
+            playErrorSound();
             againButton.setVisibility(View.VISIBLE);
             Toast.makeText(this, "¡Incorrecto! Puntuación: " + score, Toast.LENGTH_SHORT).show();
         }
@@ -185,8 +188,54 @@ public class MainActivity extends AppCompatActivity {
     private void startFinal(View view){
         Intent intent = new Intent(this, FinalActivity.class);
         intent.putExtra("SCORE_FINAL", score);
+        stopBackMusic();
         startActivity(intent);
     }
 
+    private void playCorrectSound() {
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.correct);
+        mediaPlayer.start();
+        // Liberar recursos después de que se complete la reproducción
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                mediaPlayer.release();
+            }
+        });
+    }
+
+    private void playErrorSound() {
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.error);
+        mediaPlayer.start();
+        // Liberar recursos después de que se complete la reproducción
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                mediaPlayer.release();
+            }
+        });
+    }
+
+    private void playBackMusic() {
+        if (mediaPlayer == null) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.background_music);
+        }
+        mediaPlayer.start();
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                // Reiniciar la reproducción desde el principio
+                mediaPlayer.seekTo(0);
+                mediaPlayer.start();
+            }
+        });
+    }
+
+    private void stopBackMusic() {
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+    }
 
 }

@@ -3,6 +3,7 @@ package com.example.trivial;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -46,14 +47,40 @@ public class FinalActivity extends AppCompatActivity {
             // Mostrar animación de éxito y ocultar la de fallo
             successAnimation.setVisibility(View.VISIBLE);
             successAnimation.playAnimation();
+            playCorrectSound();
 
             failureAnimation.setVisibility(View.GONE);
         } else {
             // Mostrar animación de fallo y ocultar la de éxito
             failureAnimation.setVisibility(View.VISIBLE);
             failureAnimation.playAnimation();
+            playErrorSound();
 
             successAnimation.setVisibility(View.GONE);
         }
+    }
+
+    private void playCorrectSound() {
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.final_correct);
+        mediaPlayer.start();
+        // Liberar recursos después de que se complete la reproducción
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                mediaPlayer.release();
+            }
+        });
+    }
+
+    private void playErrorSound() {
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.error);
+        mediaPlayer.start();
+        // Liberar recursos después de que se complete la reproducción
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                mediaPlayer.release();
+            }
+        });
     }
 }
