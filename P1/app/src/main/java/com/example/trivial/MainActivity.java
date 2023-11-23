@@ -1,10 +1,12 @@
 package com.example.trivial;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -20,105 +22,101 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     private TextView questionTextView;
     private RadioGroup radioGroup;
     private MediaPlayer mediaPlayer;
-    private Button nextButton, againButton;
+    private Button againButton;
     private ArrayList<Question> questions;
     private int currentQuestionIndex = 0;
     private int score = 0;
     private DbQuestions dbQuestions;
 
 
+    @SuppressLint("SdCardPath")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         dbQuestions = new DbQuestions(MainActivity.this); // Initialize DbQuestions
 
-        if (!checkDataBase("/data/data/com.example.trivial/databases/trivial.db")){
-            DatabaseHelper dbHelper = new DatabaseHelper(MainActivity.this);
-            SQLiteDatabase db = dbHelper.getWritableDatabase();
-            if (db != null){
-                Toast.makeText(this, "BASE DE DATOS CREADA", Toast.LENGTH_LONG).show();
-                dbQuestions.insertData("¿Cuál es el país de origen del fútbol?", "Inglaterra,España,Alemania,Francia", null, 0);
-                dbQuestions.insertData("¿Qué equipo ha ganado la Copa del Mundo más veces?", "R.drawable.alemania,R.drawable.argentina,R.drawable.brasil,R.drawable.italia",null, 2);
-                dbQuestions.insertData("¿Qué Copa de Europa ganó el Real Madrid gracias a la volea de Zidane?", "Séptima,Novena,Octava,Décima", null, 1);
-                dbQuestions.insertData("¿Quién ha ganado más Balones de Oro en toda la historia?", "Messi,Cristiano Ronaldo,Ronaldo Nazario,Maradona", null, 0);
-                dbQuestions.insertData("¿Cuál es el equipo de fútbol más antiguo del mundo?", "Manchester United,Sheffield,Sevilla,Boca Juniors", null, 1);    }
-            }else {
-                Toast.makeText(this, "DATOS CARGADOS", Toast.LENGTH_LONG).show();
+        if (!checkDataBase()){
+            try {
+                DatabaseHelper dbHelper = new DatabaseHelper(MainActivity.this);
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                if (db != null) {
+                    //Toast.makeText(this, "BASE DE DATOS CREADA", Toast.LENGTH_LONG).show();
+                    dbQuestions.insertData("¿Cuál es el país de origen del fútbol?", "Inglaterra,España,Alemania,Francia", null, 0);
+                    dbQuestions.insertData("¿Qué equipo ha ganado la Copa del Mundo más veces?", null, "R.drawable.alemania,R.drawable.argentina,R.drawable.brasil,R.drawable.italia", 2);
+                    dbQuestions.insertData("¿Qué Copa de Europa ganó el Real Madrid gracias a la volea de Zidane?", "Séptima,Novena,Octava,Décima", null, 1);
+                    dbQuestions.insertData("¿Quién ha ganado más Balones de Oro en toda la historia?", "Messi,Cristiano Ronaldo,Ronaldo Nazario,Maradona", null, 0);
+                    dbQuestions.insertData("¿Cuál es el equipo de fútbol más antiguo del mundo?", "Manchester United,Sheffield,Sevilla,Boca Juniors", null, 1);
+                } else {
+                    //Toast.makeText(this, "DATOS CARGADOS", Toast.LENGTH_LONG).show();
+                    Log.d("Init", "Base de datos cargada");
+                }
+            }catch (Exception ex){
+                ex.printStackTrace();
+                Log.e("Init", "Error during database operations: " + ex.getMessage());
             }
-
-
+        }
 
         // Obtener la instancia de la barra de herramientas
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         // Configurar el icono en el Toolbar
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
 
         radioGroup = findViewById(R.id.radioGroup);
         questionTextView = findViewById(R.id.questionTextView);
-        nextButton = findViewById(R.id.nextButton);
+        Button nextButton = findViewById(R.id.nextButton);
         againButton = findViewById(R.id.againButton);
-
-
 
         playBackMusic();
         loadData(); // Load questions from the database
+
         showQuestionRadioButton();
-
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton selectedRadioButton = findViewById(checkedId);
-                if (selectedRadioButton != null) {
-                    selectedRadioButton.getText();
+        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            RadioButton selectedRadioButton = findViewById(checkedId);
+            if (selectedRadioButton != null) {
+                selectedRadioButton.getText();
+            }
+        });
+        nextButton.setOnClickListener(view -> {
+            if(currentQuestionIndex != 1)
+                checkAnswer();
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.size()) {
+                if(currentQuestionIndex == 1){
+                    showQuestionImage();
+                }else{
+                    showQuestionRadioButton();
                 }
+            } else {
+                startFinal();
             }
         });
 
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(currentQuestionIndex != 1)
-                    checkAnswer();
-                currentQuestionIndex++;
-                if (currentQuestionIndex < questions.size()) {
-                    if(currentQuestionIndex == 1){
-//                        showQuestionImage();
-                    }else{
-                        showQuestionRadioButton();
-                    }
-                } else {
-                    startFinal(view);
-                }
-            }
-        });
+        againButton.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Cierra todas las actividades anteriores
+            score = 0;
+            startActivity(intent);
 
-        againButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Cierra todas las actividades anteriores
-                score = 0;
-                startActivity(intent);
-
-            }
         });
     }
 
-    private boolean checkDataBase(String Database_path) {
+    @SuppressLint("SdCardPath")
+    private boolean checkDataBase() {
         SQLiteDatabase checkDB = null;
         try {
-            checkDB = SQLiteDatabase.openDatabase(Database_path, null, SQLiteDatabase.OPEN_READONLY);
+            checkDB = SQLiteDatabase.openDatabase("/data/data/com.example.trivial/databases/trivial.db", null, SQLiteDatabase.OPEN_READONLY);
             checkDB.close();
         } catch (SQLiteException e) {
-            Toast.makeText(this, "NO EXISTE LA BASE DE DATOS", Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "NO EXISTE LA BASE DE DATOS", Toast.LENGTH_LONG).show();
         }
         return checkDB != null;
     }
@@ -136,38 +134,34 @@ public class MainActivity extends AppCompatActivity {
 //
 //
 //
-   private void showQuestionImage() {
-        Question question = questions.get(currentQuestionIndex);
-        questionTextView.setText(question.getQuestion());
+private void showQuestionImage() {
+    Question question = questions.get(currentQuestionIndex);
+    questionTextView.setText(question.getQuestion());
 
-        String fullOptionsImage = question.getOptionsImage();
-        String[] options = fullOptionsImage.split(",");
+    String fullOptionsImage = question.getOptionsImage();
+    String[] options = fullOptionsImage.split(",");
 
-        radioGroup.removeAllViews();
+    radioGroup.removeAllViews();
 
-        for (int i = 0; i < options.length; i++) {
-            if (options[i] instanceof String) {
-                // Si la opción es una imagen
-                ImageButton imageButton = new ImageButton(this);
-                imageButton.setImageResource(Integer.parseInt(options[i]));
-                imageButton.setScaleType(ImageView.ScaleType.FIT_CENTER);
-                int finalI = i;
-                imageButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        handleImageOptionClick(finalI);
-                    }
-                });
-                radioGroup.addView(imageButton);
-            } else if (options[i] instanceof String) {
-                // Si la opción es texto
-                RadioButton radioButton = new RadioButton(this);
-                radioButton.setText((String) options[i]);
-                radioGroup.addView(radioButton);
-            }
+    for (int i = 0; i < options.length; i++) {
+        ImageButton imageButton = new ImageButton(this);
+        // Extraer el nombre de la imagen después de "R.drawable."
+        String imageName = options[i].substring(options[i].lastIndexOf('.') + 1);
+        // Obtener el ID del recurso mediante el nombre de la imagen
+        int imageResourceId = getResources().getIdentifier(imageName, "drawable", getPackageName());
+        if (imageResourceId != 0) {
+            // Si se encuentra el recurso, establecer la imagen en el botón
+            imageButton.setImageResource(imageResourceId);
+            imageButton.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            int finalI = i;
+            imageButton.setOnClickListener(v -> handleImageOptionClick(finalI));
+            radioGroup.addView(imageButton);
+        } else {
+            Log.e("showQuestionImage", "No se encuentra la imagen: " + imageName);
         }
     }
-////
+}
+    ////
     private void handleImageOptionClick(int optionIndex) {
         Question question = questions.get(currentQuestionIndex);
 
@@ -232,7 +226,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 ////
-    private void startFinal(View view){
+    private void startFinal(){
         Intent intent = new Intent(this, FinalActivity.class);
         intent.putExtra("SCORE_FINAL", score);
         stopBackMusic();
@@ -243,24 +237,13 @@ public class MainActivity extends AppCompatActivity {
         MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.correct);
         mediaPlayer.start();
         // Liberar recursos después de que se complete la reproducción
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                mediaPlayer.release();
-            }
-        });
+        mediaPlayer.setOnCompletionListener(MediaPlayer::release);
     }
 ////
     private void playErrorSound() {
         MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.error);
         mediaPlayer.start();
-        // Liberar recursos después de que se complete la reproducción
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                mediaPlayer.release();
-            }
-        });
+        mediaPlayer.setOnCompletionListener(MediaPlayer::release);
     }
 ////
     private void playBackMusic() {
@@ -268,13 +251,10 @@ public class MainActivity extends AppCompatActivity {
             mediaPlayer = MediaPlayer.create(this, R.raw.background_music);
         }
         mediaPlayer.start();
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                // Reiniciar la reproducción desde el principio
-                mediaPlayer.seekTo(0);
-                mediaPlayer.start();
-            }
+        mediaPlayer.setOnCompletionListener(mediaPlayer -> {
+            // Reiniciar la reproducción desde el principio
+            mediaPlayer.seekTo(0);
+            mediaPlayer.start();
         });
     }
 ////
