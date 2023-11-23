@@ -1,18 +1,14 @@
 package com.example.trivial;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.media.DeniedByServerException;
-import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "trivial.db";
     public static final int DATABASE_VERSION = 1;
     public static final String TABLE_NAME = "questions";
-    public static final String COLUMN_ID = "_id";
     public static final String COLUMN_QUESTION = "question";
     public static final String COLUMN_OPTIONS_TEXT = "options_text";
     public static final String COLUMN_OPTIONS_IMAGES = "options_images";
@@ -40,7 +36,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void deleteData(DbQuestions db) {
-
-    }
 }

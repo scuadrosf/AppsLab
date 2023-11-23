@@ -1,13 +1,12 @@
 package com.example.trivial;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityOptionsCompat;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
 
 public class InitialActivity extends AppCompatActivity {
 
@@ -23,10 +22,6 @@ public class InitialActivity extends AppCompatActivity {
         helpButton = findViewById(R.id.helpButton);
 
     }
-
-
-
-
 
     public void startTrivial(View view){
         Intent intent = new Intent(this, MainActivity.class);

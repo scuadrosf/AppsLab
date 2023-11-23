@@ -43,10 +43,12 @@ public class MainActivity extends AppCompatActivity {
         dbQuestions = new DbQuestions(MainActivity.this); // Initialize DbQuestions
 
         if (!checkDataBase()){
-            try {
-                DatabaseHelper dbHelper = new DatabaseHelper(MainActivity.this);
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
-                if (db != null) {
+
+            SQLiteDatabase db;
+            try (DatabaseHelper dbHelper = new DatabaseHelper(MainActivity.this)) {
+                db = dbHelper.getWritableDatabase();
+            }
+            if (db != null) {
                     //Toast.makeText(this, "BASE DE DATOS CREADA", Toast.LENGTH_LONG).show();
                     dbQuestions.insertData("¿Cuál es el país de origen del fútbol?", "Inglaterra,España,Alemania,Francia", null, 0);
                     dbQuestions.insertData("¿Qué equipo ha ganado la Copa del Mundo más veces?", null, "R.drawable.alemania,R.drawable.argentina,R.drawable.brasil,R.drawable.italia", 2);
@@ -57,10 +59,7 @@ public class MainActivity extends AppCompatActivity {
                     //Toast.makeText(this, "DATOS CARGADOS", Toast.LENGTH_LONG).show();
                     Log.d("Init", "Base de datos cargada");
                 }
-            }catch (Exception ex){
-                ex.printStackTrace();
-                Log.e("Init", "Error during database operations: " + ex.getMessage());
-            }
+
         }
 
         // Obtener la instancia de la barra de herramientas

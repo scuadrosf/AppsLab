@@ -9,12 +9,12 @@ import android.widget.Button;
 
 public class UserManualActivity extends AppCompatActivity {
 
-    private Button back;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_manual);
+
+        Button back = findViewById(R.id.volver);
 
     }
 

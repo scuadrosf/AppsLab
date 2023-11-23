@@ -32,14 +32,11 @@ public class FinalActivity extends AppCompatActivity {
         LottieAnimationView failureAnimation = findViewById(R.id.animation_failure);
 
         Button backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(FinalActivity.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                finish();
-            }
+        backButton.setOnClickListener(v -> {
+            Intent intent1 = new Intent(FinalActivity.this, MainActivity.class);
+            intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent1);
+            finish();
         });
 
         // Mostrar animación según la puntuación
@@ -64,23 +61,13 @@ public class FinalActivity extends AppCompatActivity {
         MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.final_correct);
         mediaPlayer.start();
         // Liberar recursos después de que se complete la reproducción
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                mediaPlayer.release();
-            }
-        });
+        mediaPlayer.setOnCompletionListener(MediaPlayer::release);
     }
 
     private void playErrorSound() {
         MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.error);
         mediaPlayer.start();
         // Liberar recursos después de que se complete la reproducción
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                mediaPlayer.release();
-            }
-        });
+        mediaPlayer.setOnCompletionListener(MediaPlayer::release);
     }
 }

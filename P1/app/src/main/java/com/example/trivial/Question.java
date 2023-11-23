@@ -7,15 +7,7 @@ public class Question {
 
     private String optionsImage;
 
-   // private final Object[] options; // Array de objetos que pueden ser tanto texto como imágenes
     private int correctAnswerIndex;
-
-    public Question(String question, String optionsText, String optionsImage, int correctAnswerIndex) {
-        this.question = question;
-        this.optionsText = optionsText;
-        this.optionsImage = optionsImage;
-        this.correctAnswerIndex = correctAnswerIndex;
-    }
 
     public Question() {
     }
