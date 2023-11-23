@@ -15,21 +15,15 @@ public class DbQuestions extends DatabaseHelper{
     public DbQuestions(Context context) {
         super(context);
         this.context = context;
-        insertData("¿Cuál es el país de origen del fútbol?", "Inglaterra,España,Alemania,Francia", null, 0);
-        insertData("¿Qué equipo ha ganado la Copa del Mundo más veces?", null, "R.drawable.alemania,R.drawable.argentina,R.drawable.brasil,R.drawable.italia", 2);
-        insertData("¿Qué Copa de Europa ganó el Real Madrid gracias a la volea de Zidane?", "Séptima,Novena,Octava,Décima", null, 1);
-        insertData("¿Quién ha ganado más Balones de Oro en toda la historia?", "Messi,Cristiano Ronaldo,Ronaldo Nazario,Maradona", null, 0);
-        insertData("¿Cuál es el equipo de fútbol más antiguo del mundo?", "Manchester United,Sheffield,Sevilla,Boca Juniors", null, 1);    }
+    }
 
     public long insertData (String question, String optionsText, String optionsImage, int correctAnswer){
         long id = 0;
 
         try{
+
             DatabaseHelper dbHelper = new DatabaseHelper(context);
             SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-            Log.d("InsertData", "InsertData method is called");  // Agrega este log
-
 
             ContentValues values  = new ContentValues();
             values.put(COLUMN_QUESTION, question);
@@ -37,13 +31,8 @@ public class DbQuestions extends DatabaseHelper{
             values.put(COLUMN_OPTIONS_IMAGES, optionsImage);
             values.put(COLUMN_CORRECT_ANSWER, correctAnswer);
 
-            if (db != null && db.isOpen()) {
-                Log.d("InsertData", "Database is open");
-                id = db.insert(TABLE_NAME, null, values);
-                db.close();
-            } else {
-                Log.e("InsertData", "Failed to open the database");
-            }
+            id = db.insert(TABLE_NAME, null, values);
+
         }catch (Exception ex){
             ex.printStackTrace();
         }
