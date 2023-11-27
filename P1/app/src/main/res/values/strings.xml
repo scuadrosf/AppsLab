@@ -66,4 +66,5 @@
     <string name="bienvenidos_al_trivial_para_futboleros">Bienvenidos al trivial para futboleros</string>
     <string name="volver">Volver</string>
     <string name="manual">Manual</string>
+    <string name="imagelogo">imageLogo</string>
 </resources>

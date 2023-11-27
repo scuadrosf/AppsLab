@@ -1,10 +1,13 @@
 package com.example.trivial;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -14,6 +17,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,14 +37,20 @@ public class MainActivity extends AppCompatActivity {
     private int currentQuestionIndex = 0;
     private int score = 0;
     private DbQuestions dbQuestions;
+    private SoundPool sp;
+    private int soundId;
 
+    SeekBar seekBarVolume;
+    AudioManager audioManager;
 
     @SuppressLint("SdCardPath")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         dbQuestions = new DbQuestions(MainActivity.this); // Initialize DbQuestions
+        sp = new SoundPool.Builder().build();
 
         if (!checkDataBase()){
 
@@ -65,9 +75,34 @@ public class MainActivity extends AppCompatActivity {
         // Obtener la instancia de la barra de herramientas
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         // Configurar el icono en el Toolbar
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
+
+        seekBarVolume = findViewById(R.id.seekBarVolume);
+        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        // get MaxVolume
+        int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        //get Current volume
+        int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+
+        seekBarVolume.setMax(maxVolume);
+        seekBarVolume.setProgress(currentVolume);
+        seekBarVolume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress, 0);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
         radioGroup = findViewById(R.id.radioGroup);
         questionTextView = findViewById(R.id.questionTextView);
@@ -233,16 +268,29 @@ private void showQuestionImage() {
     }
 ////
     private void playCorrectSound() {
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.correct);
-        mediaPlayer.start();
-        // Liberar recursos después de que se complete la reproducción
-        mediaPlayer.setOnCompletionListener(MediaPlayer::release);
+        sp = new SoundPool.Builder().build();
+        soundId = sp.load(this, R.raw.correct, 1);
+
+        sp.setOnLoadCompleteListener((soundPool1, sampleId, status) -> {
+            if (status == 0) {
+                soundPool1.play(soundId, 1, 1, 1, 0, 1f);
+            } else {
+                Log.e("SoundPool", "Error al cargar el sonido");
+            }
+        });
     }
 ////
     private void playErrorSound() {
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.error);
-        mediaPlayer.start();
-        mediaPlayer.setOnCompletionListener(MediaPlayer::release);
+        sp = new SoundPool.Builder().build();
+        soundId = sp.load(this, R.raw.error, 1);
+
+        sp.setOnLoadCompleteListener((soundPool1, sampleId, status) -> {
+            if (status == 0) {
+                soundPool1.play(soundId, 1, 1, 1, 0, 1f);
+            } else {
+                Log.e("SoundPool", "Error al cargar el sonido");
+            }
+        });
     }
 ////
     private void playBackMusic() {

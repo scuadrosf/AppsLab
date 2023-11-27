@@ -239,9 +239,26 @@
             android:adjustViewBounds="true"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:src="@drawable/iclauncher" />
+            android:src="@drawable/iclauncher"
+            android:contentDescription="@string/imagelogo" />
 
     </androidx.appcompat.widget.Toolbar>
+
+    <SeekBar
+        android:id="@+id/seekBarVolume"
+        android:layout_width="393dp"
+        android:layout_height="755dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-154dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="154dp"
+        android:layout_marginBottom="0dp"
+        android:rotation="270" />
+
+
 
 
 </RelativeLayout>
