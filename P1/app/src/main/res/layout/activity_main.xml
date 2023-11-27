@@ -246,19 +246,17 @@
 
     <SeekBar
         android:id="@+id/seekBarVolume"
-        android:layout_width="393dp"
-        android:layout_height="755dp"
+        android:layout_width="wrap_content"
+        android:layout_height="228dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="-154dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="154dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginStart="-20dp"
+        android:layout_marginTop="86dp"
+        android:layout_marginEnd="314dp"
+        android:layout_marginBottom="493dp"
         android:rotation="270" />
-
-
 
 
 </RelativeLayout>
