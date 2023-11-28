@@ -182,7 +182,7 @@ private void showQuestionImage() {
         // Extraer el nombre de la imagen después de "R.drawable."
         String imageName = options[i].substring(options[i].lastIndexOf('.') + 1);
         // Obtener el ID del recurso mediante el nombre de la imagen
-        int imageResourceId = getResources().getIdentifier(imageName, "drawable", getPackageName());
+        @SuppressLint("DiscouragedApi") int imageResourceId = getResources().getIdentifier(imageName, "drawable", getPackageName());
         if (imageResourceId != 0) {
             // Si se encuentra el recurso, establecer la imagen en el botón
             imageButton.setImageResource(imageResourceId);
@@ -211,6 +211,7 @@ private void showQuestionImage() {
         }
     }
 ////
+    @SuppressLint("DiscouragedApi")
     private void showQuestionRadioButton() {
         radioGroup.clearCheck(); // Deselecciona cualquier RadioButton previamente seleccionado
         Question question = questions.get(currentQuestionIndex);
