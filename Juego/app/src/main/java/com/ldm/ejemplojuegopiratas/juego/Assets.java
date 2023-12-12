@@ -8,6 +8,12 @@ public class Assets {
     public static Pixmap logo;
     public static Pixmap menuprincipal;
     public static Pixmap botones;
+    public static Pixmap flechaIzq;
+    public static Pixmap flechaDrch;
+    public static Pixmap parar;
+    public static Pixmap cerrar;
+    public static Pixmap muted;
+    public static Pixmap noMuted;
     public static Pixmap ayuda1;
     public static Pixmap ayuda2;
     public static Pixmap ayuda3;

@@ -185,17 +185,17 @@ public class PantallaJuego extends Pantalla {
     private void drawReadyUI() {
         Graficos g = juego.getGraphics();
 
-        g.drawPixmap(Assets.preparado, 47, 100);
+        g.drawPixmap(Assets.preparado, 25, 100);
         g.drawLine(0, 416, 480, 416, Color.BLACK);
     }
 
     private void drawRunningUI() {
         Graficos g = juego.getGraphics();
 
-        g.drawPixmap(Assets.botones, 0, 0, 64, 128, 64, 64);
+        g.drawPixmap(Assets.parar, 0, 0);
         g.drawLine(0, 416, 480, 416, Color.BLACK);
-        g.drawPixmap(Assets.botones, 0, 416, 64, 64, 64, 64);
-        g.drawPixmap(Assets.botones, 256, 416, 0, 64, 64, 64);
+        g.drawPixmap(Assets.flechaIzq, 0, 416);
+        g.drawPixmap(Assets.flechaDrch, 256, 416);
     }
 
     private void drawPausedUI() {
@@ -208,8 +208,8 @@ public class PantallaJuego extends Pantalla {
     private void drawGameOverUI() {
         Graficos g = juego.getGraphics();
 
-        g.drawPixmap(Assets.finjuego, 62, 100);
-        g.drawPixmap(Assets.botones, 128, 200, 0, 128, 64, 64);
+        g.drawPixmap(Assets.finjuego, -10, 100);
+        g.drawPixmap(Assets.cerrar, 140, 330);
         g.drawLine(0, 416, 480, 416, Color.BLACK);
     }
 

@@ -61,13 +61,13 @@ public class MainMenuScreen extends Pantalla {
     public void present(float deltaTime) {
         Graficos g = juego.getGraphics();
 
-        g.drawPixmap(Assets.fondo, 0, 0);
-        g.drawPixmap(Assets.logo, 32, 20);
-        g.drawPixmap(Assets.menuprincipal, 64, 220);
+        g.drawPixmap(Assets.fondo, -50, -70);
+        g.drawPixmap(Assets.logo, 70, 20);
+        g.drawPixmap(Assets.menuprincipal, -10, 120);
         if(Configuraciones.sonidoHabilitado)
-            g.drawPixmap(Assets.botones, 0, 416, 0, 0, 64, 64);
+            g.drawPixmap(Assets.noMuted, 0, 416);
         else
-            g.drawPixmap(Assets.botones, 0, 416, 64, 0, 64, 64);
+            g.drawPixmap(Assets.muted, 0, 390);
     }
 
     @Override
