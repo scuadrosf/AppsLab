@@ -127,7 +127,7 @@ public class PantallaJuego extends Pantalla {
     public void present(float deltaTime) {
         Graficos g = juego.getGraphics();
 
-        g.drawPixmap(Assets.fondo, 0, 0);
+        g.drawPixmap(Assets.fondo, -50, -70);
         drawWorld(mundo);
         if(estado == EstadoJuego.Preparado)
             drawReadyUI();
@@ -201,15 +201,15 @@ public class PantallaJuego extends Pantalla {
     private void drawPausedUI() {
         Graficos g = juego.getGraphics();
 
-        g.drawPixmap(Assets.menupausa, 80, 100);
+        g.drawPixmap(Assets.menupausa, 20, 25);
         g.drawLine(0, 416, 480, 416, Color.BLACK);
     }
 
     private void drawGameOverUI() {
         Graficos g = juego.getGraphics();
 
-        g.drawPixmap(Assets.finjuego, -10, 100);
-        g.drawPixmap(Assets.cerrar, 140, 330);
+        g.drawPixmap(Assets.finjuego, -10, 0);
+        g.drawPixmap(Assets.cerrar, 140, 250);
         g.drawLine(0, 416, 480, 416, Color.BLACK);
     }
 
