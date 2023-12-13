@@ -17,13 +17,13 @@ public class PantallaJuego extends Pantalla {
     }
 
     EstadoJuego estado = EstadoJuego.Preparado;
-    Mundo mundo;
+    Campo campo;
     int antiguaPuntuacion = 0;
     String puntuacion = "0";
 
     public PantallaJuego(Juego juego) {
         super(juego);
-        mundo = new Mundo();
+        campo = new Campo();
     }
 
     @Override
@@ -61,22 +61,22 @@ public class PantallaJuego extends Pantalla {
             }
             if(event.type == TouchEvent.TOUCH_DOWN) {
                 if(event.x < 64 && event.y > 416) {
-                    mundo.jollyroger.girarIzquierda();
+                    campo.jollyroger.girarIzquierda();
                 }
                 if(event.x > 256 && event.y > 416) {
-                    mundo.jollyroger.girarDerecha();
+                    campo.jollyroger.girarDerecha();
                 }
             }
         }
 
-        mundo.update(deltaTime);
-        if(mundo.finalJuego) {
+        campo.update(deltaTime);
+        if(campo.finalJuego) {
             if(Configuraciones.sonidoHabilitado)
                 Assets.derrota.play(1);
             estado = EstadoJuego.FinJuego;
         }
-        if(antiguaPuntuacion != mundo.puntuacion) {
-            antiguaPuntuacion = mundo.puntuacion;
+        if(antiguaPuntuacion != campo.puntuacion) {
+            antiguaPuntuacion = campo.puntuacion;
             puntuacion = "" + antiguaPuntuacion;
             if(Configuraciones.sonidoHabilitado)
                 Assets.ataque.play(1);
@@ -128,7 +128,7 @@ public class PantallaJuego extends Pantalla {
         Graficos g = juego.getGraphics();
 
         g.drawPixmap(Assets.fondo, -50, -70);
-        drawWorld(mundo);
+        drawWorld(campo);
         if(estado == EstadoJuego.Preparado)
             drawReadyUI();
         if(estado == EstadoJuego.Ejecutandose)
@@ -142,27 +142,27 @@ public class PantallaJuego extends Pantalla {
         drawText(g, puntuacion, g.getWidth() / 2 - puntuacion.length()*20 / 2, g.getHeight() - 42);
     }
 
-    private void drawWorld(Mundo mundo) {
+    private void drawWorld(Campo campo) {
         Graficos g = juego.getGraphics();
-        JollyRoger jollyroger = mundo.jollyroger;
-        Tripulacion head = jollyroger.partes.get(0);
-        Botin botin = mundo.botin;
+        JollyRoger jollyroger = campo.jollyroger;
+        Balon head = jollyroger.partes.get(0);
+        Premio premio = campo.premio;
 
 
         Pixmap stainPixmap = null;
-        if(botin.tipo== Botin.TIPO_1)
+        if(premio.tipo== Premio.TIPO_1)
             stainPixmap = Assets.premio1;
-        if(botin.tipo == Botin.TIPO_2)
+        if(premio.tipo == Premio.TIPO_2)
             stainPixmap = Assets.premio2;
-        if(botin.tipo == Botin.TIPO_3)
+        if(premio.tipo == Premio.TIPO_3)
             stainPixmap = Assets.premio3;
-        int x = botin.x * 32;
-        int y = botin.y * 32;
+        int x = premio.x * 32;
+        int y = premio.y * 32;
         g.drawPixmap(stainPixmap, x, y);
 
         int len = jollyroger.partes.size();
         for(int i = 1; i < len; i++) {
-            Tripulacion part = jollyroger.partes.get(i);
+            Balon part = jollyroger.partes.get(i);
             x = part.x * 32;
             y = part.y * 32;
             g.drawPixmap(Assets.goles, x, y);
@@ -243,8 +243,8 @@ public class PantallaJuego extends Pantalla {
         if(estado == EstadoJuego.Ejecutandose)
             estado = EstadoJuego.Pausado;
 
-        if(mundo.finalJuego) {
-            Configuraciones.addScore(mundo.puntuacion);
+        if(campo.finalJuego) {
+            Configuraciones.addScore(campo.puntuacion);
             Configuraciones.save(juego.getFileIO());
         }
     }

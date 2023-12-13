@@ -2,7 +2,7 @@ package com.ldm.ejemplojuegopiratas.juego;
 
 import java.util.Random;
 
-public class Mundo {
+public class Campo {
     static final int MUNDO_ANCHO = 10;
     static final int MUNDO_ALTO = 13;
     static final int INCREMENTO_PUNTUACION = 10;
@@ -10,7 +10,7 @@ public class Mundo {
     static final float TICK_DECREMENTO = 0.05f;
 
     public JollyRoger jollyroger;
-    public Botin botin;
+    public Premio premio;
     public boolean finalJuego = false;
     public int puntuacion = 0;
 
@@ -19,7 +19,7 @@ public class Mundo {
     float tiempoTick = 0;
     static float tick = TICK_INICIAL;
 
-    public Mundo() {
+    public Campo() {
         jollyroger = new JollyRoger();
         colocarBotin();
     }
@@ -33,7 +33,7 @@ public class Mundo {
 
         int len = jollyroger.partes.size();
         for (int i = 0; i < len; i++) {
-            Tripulacion parte = jollyroger.partes.get(i);
+            Balon parte = jollyroger.partes.get(i);
             campos[parte.x][parte.y] = true;
         }
 
@@ -51,7 +51,7 @@ public class Mundo {
                 }
             }
         }
-        botin = new Botin(botinX, botinY, random.nextInt(3));
+        premio = new Premio(botinX, botinY, random.nextInt(3));
     }
 
     public void update(float deltaTime) {
@@ -69,8 +69,8 @@ public class Mundo {
                 return;
             }
 
-            Tripulacion head = jollyroger.partes.get(0);
-            if (head.x == botin.x && head.y == botin.y) {
+            Balon head = jollyroger.partes.get(0);
+            if (head.x == premio.x && head.y == premio.y) {
                 puntuacion += INCREMENTO_PUNTUACION;
                 jollyroger.abordaje();
                 if (jollyroger.partes.size() == MUNDO_ANCHO * MUNDO_ALTO) {
