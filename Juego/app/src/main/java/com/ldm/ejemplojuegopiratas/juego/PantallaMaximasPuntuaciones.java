@@ -41,7 +41,7 @@ public class PantallaMaximasPuntuaciones extends Pantalla {
         Graficos g = juego.getGraphics();
 
         g.drawPixmap(Assets.fondo, 0, 0);
-        g.drawPixmap(Assets.menuprincipal, 64, 20, 0, 42, 196, 42);
+//        g.drawPixmap(Assets.menuprincipal, 64, 20);
 
         int y = 100;
         for (int i = 0; i < 5; i++) {

@@ -235,7 +235,7 @@ public class PantallaJuego extends Pantalla {
                 srcWidth = 20;
             }
 
-            g.drawPixmap(Assets.numeros, x, y, srcX, 0, srcWidth, 32);
+            g.drawPixmap(Assets.numeros, x, y, srcX, 0, srcWidth, 40);
             x += srcWidth;
         }
     }
