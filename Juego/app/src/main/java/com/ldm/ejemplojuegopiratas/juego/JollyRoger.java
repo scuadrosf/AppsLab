@@ -31,13 +31,18 @@ public class JollyRoger {
             direccion = DERECHA;
     }
 
-    public void abordaje() {
+    public void golazo() {
         Balon end = partes.get(partes.size()-1);
         partes.add(new Balon(end.x, end.y));
     }
 
+    public void penalti() {
+        Balon end = partes.get(partes.size()-1);
+        partes.remove(end);
+    }
+
     public void avance() {
-        Balon barco = partes.get(0);
+        Balon balon = partes.get(0);
 
         int len = partes.size() - 1;
         for(int i = len; i > 0; i--) {
@@ -48,30 +53,30 @@ public class JollyRoger {
         }
 
         if(direccion == ARRIBA)
-            barco.y -= 1;
+            balon.y -= 1;
         if(direccion == IZQUIERDA)
-            barco.x -= 1;
+            balon.x -= 1;
         if(direccion == ABAJO)
-            barco.y += 1;
+            balon.y += 1;
         if(direccion == DERECHA)
-            barco.x += 1;
+            balon.x += 1;
 
-        if(barco.x < 0)
-            barco.x = 9;
-        if(barco.x > 9)
-            barco.x = 0;
-        if(barco.y < 0)
-            barco.y = 12;
-        if(barco.y > 12)
-            barco.y = 0;
+        if(balon.x < 0)
+            balon.x = 9;
+        if(balon.x > 9)
+            balon.x = 0;
+        if(balon.y < 0)
+            balon.y = 12;
+        if(balon.y > 12)
+            balon.y = 0;
     }
 
     public boolean comprobarChoque() {
         int len = partes.size();
-        Balon barco = partes.get(0);
+        Balon balon = partes.get(0);
         for(int i = 1; i < len; i++) {
             Balon parte = partes.get(i);
-            if(parte.x == barco.x && parte.y == barco.y)
+            if(parte.x == balon.x && parte.y == balon.y)
                 return true;
         }
         return false;

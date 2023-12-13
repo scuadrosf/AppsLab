@@ -16,7 +16,7 @@ public class LoadingScreen extends Pantalla{
         Assets.fondo = g.newPixmap("fondo.png", PixmapFormat.RGB565);
         Assets.logo = g.newPixmap("logo.png", PixmapFormat.ARGB4444);
         Assets.menuprincipal = g.newPixmap("menuprincipal.png", PixmapFormat.ARGB4444);
-//        Assets.botones = g.newPixmap("botones.png", PixmapFormat.ARGB4444);
+        Assets.bota = g.newPixmap("bota.png", PixmapFormat.ARGB4444);
 
         Assets.flechaDrch = g.newPixmap("flechaDrch.png", PixmapFormat.ARGB4444);
         Assets.flechaIzq = g.newPixmap("flechaIzq.png", PixmapFormat.ARGB4444);

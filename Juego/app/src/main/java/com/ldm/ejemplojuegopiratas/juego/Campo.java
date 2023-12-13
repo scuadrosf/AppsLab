@@ -21,10 +21,10 @@ public class Campo {
 
     public Campo() {
         jollyroger = new JollyRoger();
-        colocarBotin();
+        colocarPremio();
     }
 
-    private void colocarBotin() {
+    private void colocarPremio() {
         for (int x = 0; x < MUNDO_ANCHO; x++) {
             for (int y = 0; y < MUNDO_ALTO; y++) {
                 campos[x][y] = false;
@@ -51,7 +51,7 @@ public class Campo {
                 }
             }
         }
-        premio = new Premio(botinX, botinY, random.nextInt(3));
+        premio = new Premio(botinX, botinY, random.nextInt(4));
     }
 
     public void update(float deltaTime) {
@@ -70,19 +70,33 @@ public class Campo {
             }
 
             Balon head = jollyroger.partes.get(0);
-            if (head.x == premio.x && head.y == premio.y) {
+            if (head.x == premio.x && head.y == premio.y && premio.tipo != 3) {
                 puntuacion += INCREMENTO_PUNTUACION;
-                jollyroger.abordaje();
+                jollyroger.golazo();
                 if (jollyroger.partes.size() == MUNDO_ANCHO * MUNDO_ALTO) {
                     finalJuego = true;
                     return;
                 } else {
-                    colocarBotin();
+                    colocarPremio();
                 }
 
                 if (puntuacion % 100 == 0 && tick - TICK_DECREMENTO > 0) {
                     tick -= TICK_DECREMENTO;
                 }
+            } else if (head.x == premio.x && head.y == premio.y) {
+                puntuacion -= INCREMENTO_PUNTUACION;
+                jollyroger.penalti();
+                if (jollyroger.partes.size() == MUNDO_ANCHO * MUNDO_ALTO) {
+                    finalJuego = true;
+                    return;
+                } else {
+                    colocarPremio();
+                }
+
+                if (puntuacion % 100 == 0 && tick - TICK_DECREMENTO > 0) {
+                    tick -= TICK_DECREMENTO;
+                }
+
             }
         }
     }

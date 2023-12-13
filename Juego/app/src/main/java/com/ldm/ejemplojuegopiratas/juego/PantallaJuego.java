@@ -156,6 +156,8 @@ public class PantallaJuego extends Pantalla {
             stainPixmap = Assets.premio2;
         if(premio.tipo == Premio.TIPO_3)
             stainPixmap = Assets.premio3;
+        if(premio.tipo == Premio.TIPO_4)
+            stainPixmap = Assets.bota;
         int x = premio.x * 32;
         int y = premio.y * 32;
         g.drawPixmap(stainPixmap, x, y);
