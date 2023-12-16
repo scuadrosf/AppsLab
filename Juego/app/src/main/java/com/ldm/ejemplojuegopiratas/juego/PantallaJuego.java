@@ -112,7 +112,7 @@ public class PantallaJuego extends Pantalla {
             TouchEvent event = touchEvents.get(i);
             if(event.type == TouchEvent.TOUCH_UP) {
                 if(event.x >= 128 && event.x <= 192 &&
-                        event.y >= 200 && event.y <= 264) {
+                        event.y >= 200 && event.y <= 300) {
                     if(Configuraciones.sonidoHabilitado)
                         Assets.pulsar.play(1);
                     juego.setScreen(new MainMenuScreen(juego));
