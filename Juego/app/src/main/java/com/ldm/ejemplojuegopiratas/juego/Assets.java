@@ -25,6 +25,10 @@ public class Assets {
     public static Pixmap futIzquierda;
     public static Pixmap futAbajo;
     public static Pixmap futDerecha;
+    public static Pixmap fut2Arriba;
+    public static Pixmap fut2Izquierda;
+    public static Pixmap fut2Abajo;
+    public static Pixmap fut2Derecha;
     public static Pixmap goles;
     public static Pixmap premio1;
     public static Pixmap premio2;
