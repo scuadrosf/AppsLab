@@ -21,6 +21,8 @@ public class Assets {
     public static Pixmap preparado;
     public static Pixmap menupausa;
     public static Pixmap finjuego;
+    public static Pixmap futPresent;
+    public static Pixmap fut2Present;
     public static Pixmap futArriba;
     public static Pixmap futIzquierda;
     public static Pixmap futAbajo;

@@ -35,12 +35,15 @@ public class LoadingScreen extends Pantalla{
 
         Assets.menupausa = g.newPixmap("menupausa.png", PixmapFormat.ARGB4444);
 
+        Assets.futPresent = g.newPixmap("futpresent.png", PixmapFormat.ARGB4444);
+        Assets.fut2Present = g.newPixmap("fut2present.png", PixmapFormat.ARGB4444);
+
         Assets.futArriba = g.newPixmap("futArriba.png", PixmapFormat.ARGB4444);
         Assets.futIzquierda = g.newPixmap("futIzq.png", PixmapFormat.ARGB4444);
         Assets.futAbajo = g.newPixmap("futAbajo.png", PixmapFormat.ARGB4444);
         Assets.futDerecha = g.newPixmap("futDrch.png", PixmapFormat.ARGB4444);
         Assets.fut2Arriba = g.newPixmap("fut2arriba.png", PixmapFormat.ARGB4444);
-        Assets.fut2Izquierda = g.newPixmap("fut2zq.png", PixmapFormat.ARGB4444);
+        Assets.fut2Izquierda = g.newPixmap("fut2izq.png", PixmapFormat.ARGB4444);
         Assets.fut2Abajo = g.newPixmap("fut2abajo.png", PixmapFormat.ARGB4444);
         Assets.fut2Derecha = g.newPixmap("fut2drch.png", PixmapFormat.ARGB4444);
         Assets.goles = g.newPixmap("golazo.png", PixmapFormat.ARGB4444);

@@ -10,6 +10,8 @@ import com.ldm.ejemplojuegopiratas.FileIO;
 
 public class Configuraciones {
     public static boolean sonidoHabilitado = true;
+    public static boolean playerSelected = true;
+
     public static int[] maxPuntuaciones = new int[] { 100, 80, 50, 30, 10 };
 
     public static void cargar(FileIO files) {
@@ -65,5 +67,9 @@ public class Configuraciones {
                 break;
             }
         }
+    }
+
+    public static void selectPlayer(boolean newSelected) {
+        playerSelected = newSelected;
     }
 }

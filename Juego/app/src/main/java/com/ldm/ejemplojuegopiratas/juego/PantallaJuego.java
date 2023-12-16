@@ -170,18 +170,36 @@ public class PantallaJuego extends Pantalla {
             g.drawPixmap(Assets.goles, x, y);
         }
 
-        Pixmap headPixmap = null;
-        if(jollyroger.direccion == JollyRoger.ARRIBA)
-            headPixmap = Assets.futArriba;
-        if(jollyroger.direccion == JollyRoger.IZQUIERDA)
-            headPixmap = Assets.futIzquierda;
-        if(jollyroger.direccion == JollyRoger.ABAJO)
-            headPixmap = Assets.futAbajo;
-        if(jollyroger.direccion == JollyRoger.DERECHA)
-            headPixmap = Assets.futDerecha;
-        x = head.x * 32 + 16;
-        y = head.y * 32 + 16;
-        g.drawPixmap(headPixmap, x - headPixmap.getWidth() / 2, y - headPixmap.getHeight() / 2);
+        if (Configuraciones.playerSelected){
+            // Player is male
+            Pixmap headPixmap = null;
+            if(jollyroger.direccion == JollyRoger.ARRIBA)
+                headPixmap = Assets.futArriba;
+            if(jollyroger.direccion == JollyRoger.IZQUIERDA)
+                headPixmap = Assets.futIzquierda;
+            if(jollyroger.direccion == JollyRoger.ABAJO)
+                headPixmap = Assets.futAbajo;
+            if(jollyroger.direccion == JollyRoger.DERECHA)
+                headPixmap = Assets.futDerecha;
+            x = head.x * 32 + 16;
+            y = head.y * 32 + 16;
+            g.drawPixmap(headPixmap, x - headPixmap.getWidth() / 2, y - headPixmap.getHeight() / 2);
+        }else{
+            // Player is female
+            Pixmap headPixmap = null;
+            if(jollyroger.direccion == JollyRoger.ARRIBA)
+                headPixmap = Assets.fut2Arriba;
+            if(jollyroger.direccion == JollyRoger.IZQUIERDA)
+                headPixmap = Assets.fut2Izquierda;
+            if(jollyroger.direccion == JollyRoger.ABAJO)
+                headPixmap = Assets.fut2Abajo;
+            if(jollyroger.direccion == JollyRoger.DERECHA)
+                headPixmap = Assets.fut2Derecha;
+            x = head.x * 32 + 16;
+            y = head.y * 32 + 16;
+            g.drawPixmap(headPixmap, x - headPixmap.getWidth() / 2, y - headPixmap.getHeight() / 2);
+        }
+
     }
 
     private void drawReadyUI() {
