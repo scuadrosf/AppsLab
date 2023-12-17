@@ -3,8 +3,8 @@ package com.ldm.ejemplojuegopiratas.juego;
 import java.util.Random;
 
 public class Campo {
-    static final int MUNDO_ANCHO = 10;
-    static final int MUNDO_ALTO = 13;
+    static final int CAMPO_ANCHO = 10;
+    static final int CAMPO_ALTO = 13;
     static final int INCREMENTO_PUNTUACION = 10;
     static final float TICK_INICIAL = 0.5f;
     static final float TICK_DECREMENTO = 0.05f;
@@ -14,7 +14,7 @@ public class Campo {
     public boolean finalJuego = false;
     public int puntuacion = 0;
 
-    boolean campos[][] = new boolean[MUNDO_ANCHO][MUNDO_ALTO];
+    boolean[][] campos = new boolean[CAMPO_ANCHO][CAMPO_ALTO];
     Random random = new Random();
     float tiempoTick = 0;
     static float tick = TICK_INICIAL;
@@ -25,8 +25,8 @@ public class Campo {
     }
 
     private void colocarPremio() {
-        for (int x = 0; x < MUNDO_ANCHO; x++) {
-            for (int y = 0; y < MUNDO_ALTO; y++) {
+        for (int x = 0; x < CAMPO_ANCHO; x++) {
+            for (int y = 0; y < CAMPO_ALTO; y++) {
                 campos[x][y] = false;
             }
         }
@@ -37,16 +37,14 @@ public class Campo {
             campos[parte.x][parte.y] = true;
         }
 
-        int botinX = random.nextInt(MUNDO_ANCHO);
-        int botinY = random.nextInt(MUNDO_ALTO);
-        while (true) {
-            if (campos[botinX][botinY] == false)
-                break;
+        int botinX = random.nextInt(CAMPO_ANCHO);
+        int botinY = random.nextInt(CAMPO_ALTO);
+        while (campos[botinX][botinY]) {
             botinX += 1;
-            if (botinX >= MUNDO_ANCHO) {
+            if (botinX >= CAMPO_ANCHO) {
                 botinX = 0;
                 botinY += 1;
-                if (botinY >= MUNDO_ALTO) {
+                if (botinY >= CAMPO_ALTO) {
                     botinY = 0;
                 }
             }
@@ -73,7 +71,7 @@ public class Campo {
             if (head.x == premio.x && head.y == premio.y && premio.tipo != 3) {
                 puntuacion += INCREMENTO_PUNTUACION;
                 jollyroger.golazo();
-                if (jollyroger.partes.size() == MUNDO_ANCHO * MUNDO_ALTO) {
+                if (jollyroger.partes.size() == CAMPO_ANCHO * CAMPO_ALTO) {
                     finalJuego = true;
                     return;
                 } else {
@@ -86,7 +84,7 @@ public class Campo {
             } else if (head.x == premio.x && head.y == premio.y) {
                 puntuacion -= INCREMENTO_PUNTUACION;
                 jollyroger.penalti();
-                if (jollyroger.partes.size() == MUNDO_ANCHO * MUNDO_ALTO) {
+                if (jollyroger.partes.size() == CAMPO_ANCHO * CAMPO_ALTO) {
                     finalJuego = true;
                     return;
                 } else {

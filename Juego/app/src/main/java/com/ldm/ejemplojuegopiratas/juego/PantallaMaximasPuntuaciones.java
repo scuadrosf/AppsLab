@@ -7,7 +7,7 @@ import com.ldm.ejemplojuegopiratas.Pantalla;
 
 
 public class PantallaMaximasPuntuaciones extends Pantalla {
-    String lineas[] = new String[5];
+    String[] lineas = new String[5];
 
     public PantallaMaximasPuntuaciones(Juego juego) {
         super(juego);
@@ -41,14 +41,12 @@ public class PantallaMaximasPuntuaciones extends Pantalla {
         Graficos g = juego.getGraphics();
 
         g.drawPixmap(Assets.fondo, 0, 0);
-//        g.drawPixmap(Assets.menuprincipal, 64, 20);
 
         int y = 100;
         for (int i = 0; i < 5; i++) {
             dibujarTexto(g, lineas[i], 20, y);
             y += 50;
         }
-
         g.drawPixmap(Assets.flechaIzq, 0, 416);
     }
 
@@ -62,8 +60,8 @@ public class PantallaMaximasPuntuaciones extends Pantalla {
                 continue;
             }
 
-            int srcX = 0;
-            int srcWidth = 0;
+            int srcX;
+            int srcWidth;
             if (character == '.') {
                 srcX = 200;
                 srcWidth = 10;

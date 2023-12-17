@@ -176,9 +176,9 @@ public class PantallaJuego extends Pantalla {
             g.drawPixmap(Assets.goles, x, y);
         }
 
+        Pixmap headPixmap = null;
         if (Configuraciones.playerSelected){
             // Player is male
-            Pixmap headPixmap = null;
             if(jollyroger.direccion == JollyRoger.ARRIBA)
                 headPixmap = Assets.futArriba;
             if(jollyroger.direccion == JollyRoger.IZQUIERDA)
@@ -187,12 +187,8 @@ public class PantallaJuego extends Pantalla {
                 headPixmap = Assets.futAbajo;
             if(jollyroger.direccion == JollyRoger.DERECHA)
                 headPixmap = Assets.futDerecha;
-            x = head.x * 32 + 16;
-            y = head.y * 32 + 16;
-            g.drawPixmap(headPixmap, x - headPixmap.getWidth() / 2, y - headPixmap.getHeight() / 2);
         }else{
             // Player is female
-            Pixmap headPixmap = null;
             if(jollyroger.direccion == JollyRoger.ARRIBA)
                 headPixmap = Assets.fut2Arriba;
             if(jollyroger.direccion == JollyRoger.IZQUIERDA)
@@ -201,10 +197,10 @@ public class PantallaJuego extends Pantalla {
                 headPixmap = Assets.fut2Abajo;
             if(jollyroger.direccion == JollyRoger.DERECHA)
                 headPixmap = Assets.fut2Derecha;
-            x = head.x * 32 + 16;
-            y = head.y * 32 + 16;
-            g.drawPixmap(headPixmap, x - headPixmap.getWidth() / 2, y - headPixmap.getHeight() / 2);
         }
+        x = head.x * 32 + 16;
+        y = head.y * 32 + 16;
+        g.drawPixmap(headPixmap, x - headPixmap.getWidth() / 2, y - headPixmap.getHeight() / 2);
 
     }
 
@@ -249,8 +245,8 @@ public class PantallaJuego extends Pantalla {
                 continue;
             }
 
-            int srcX = 0;
-            int srcWidth = 0;
+            int srcX;
+            int srcWidth;
             if (character == '.') {
                 srcX = 200;
                 srcWidth = 10;

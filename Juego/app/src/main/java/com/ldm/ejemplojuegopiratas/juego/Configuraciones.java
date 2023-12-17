@@ -1,7 +1,10 @@
 package com.ldm.ejemplojuegopiratas.juego;
 
+import android.os.Environment;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -15,10 +18,8 @@ public class Configuraciones {
     public static int[] maxPuntuaciones = new int[] { 100, 80, 50, 30, 10 };
 
     public static void cargar(FileIO files) {
-        BufferedReader in = null;
-        try {
-            in = new BufferedReader(new InputStreamReader(
-                    files.leerArchivo(".piratas")));
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(
+                files.leerArchivo(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator)))) {
             sonidoHabilitado = Boolean.parseBoolean(in.readLine());
             for (int i = 0; i < 5; i++) {
                 maxPuntuaciones[i] = Integer.parseInt(in.readLine());
@@ -27,20 +28,12 @@ public class Configuraciones {
             // :( Está bien aquí debería ir algo
         } catch (NumberFormatException e) {
             // :/ Nadie es perfecto
-        } finally {
-            try {
-                if (in != null)
-                    in.close();
-            } catch (IOException e) {
-            }
         }
     }
 
     public static void save(FileIO files) {
-        BufferedWriter out = null;
-        try {
-            out = new BufferedWriter(new OutputStreamWriter(
-                    files.escribirArchivo(".piratas")));
+        try (BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
+                files.escribirArchivo(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator)))) {
             out.write(Boolean.toString(sonidoHabilitado));
             out.write("\n");
             for (int i = 0; i < 5; i++) {
@@ -49,12 +42,7 @@ public class Configuraciones {
             }
 
         } catch (IOException e) {
-        } finally {
-            try {
-                if (out != null)
-                    out.close();
-            } catch (IOException e) {
-            }
+            // Do not work
         }
     }
 

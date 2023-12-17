@@ -9,7 +9,7 @@ public class JollyRoger {
     public static final int ABAJO = 2;
     public static final int DERECHA = 3;
 
-    public List<Balon> partes = new ArrayList<Balon>();
+    public List<Balon> partes = new ArrayList<>();
     public int direccion;
 
     public JollyRoger() {

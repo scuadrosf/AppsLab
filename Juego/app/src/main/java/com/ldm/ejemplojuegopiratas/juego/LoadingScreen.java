@@ -1,9 +1,9 @@
 package com.ldm.ejemplojuegopiratas.juego;
 
-import com.ldm.ejemplojuegopiratas.Juego;
 import com.ldm.ejemplojuegopiratas.Graficos;
-import com.ldm.ejemplojuegopiratas.Pantalla;
 import com.ldm.ejemplojuegopiratas.Graficos.PixmapFormat;
+import com.ldm.ejemplojuegopiratas.Juego;
+import com.ldm.ejemplojuegopiratas.Pantalla;
 
 public class LoadingScreen extends Pantalla{
     public LoadingScreen(Juego juego) {
@@ -55,8 +55,6 @@ public class LoadingScreen extends Pantalla{
         Assets.golazo = juego.getAudio().nuevoSonido("golazo.ogg");
         Assets.perder = juego.getAudio().nuevoSonido("perder.ogg");
         Assets.incorrecto = juego.getAudio().nuevoSonido("incorrect.ogg");
-
-
 
         Configuraciones.cargar(juego.getFileIO());
         juego.setScreen(new MainMenuScreen(juego));

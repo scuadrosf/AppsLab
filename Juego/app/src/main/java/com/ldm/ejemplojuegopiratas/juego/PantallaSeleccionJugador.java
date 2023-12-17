@@ -9,8 +9,6 @@ import java.util.List;
 
 public class PantallaSeleccionJugador extends Pantalla {
 
-    boolean maleSelected = true;
-
     public PantallaSeleccionJugador(Juego juego) {
         super(juego);
     }
