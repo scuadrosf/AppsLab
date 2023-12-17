@@ -72,15 +72,21 @@ public class PantallaJuego extends Pantalla {
         campo.update(deltaTime);
         if(campo.finalJuego) {
             if(Configuraciones.sonidoHabilitado)
-                Assets.derrota.play(1);
+                Assets.perder.play(1);
             estado = EstadoJuego.FinJuego;
         }
-        if(antiguaPuntuacion != campo.puntuacion) {
+        if (antiguaPuntuacion != campo.puntuacion) {
+            if (Configuraciones.sonidoHabilitado) {
+                if (antiguaPuntuacion > campo.puntuacion) {
+                    Assets.incorrecto.play(1);
+                } else {
+                    Assets.golazo.play(1);
+                }
+            }
             antiguaPuntuacion = campo.puntuacion;
             puntuacion = "" + antiguaPuntuacion;
-            if(Configuraciones.sonidoHabilitado)
-                Assets.ataque.play(1);
         }
+
     }
 
     private void updatePaused(List<TouchEvent> touchEvents) {

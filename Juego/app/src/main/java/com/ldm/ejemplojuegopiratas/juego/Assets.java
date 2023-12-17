@@ -37,7 +37,9 @@ public class Assets {
     public static Pixmap premio3;
 
     public static Sonido pulsar;
-    public static Sonido ataque;
-    public static Sonido derrota;
+    public static Sonido golazo;
+    public static Sonido perder;
+    public static Sonido incorrecto;
+
 
 }
