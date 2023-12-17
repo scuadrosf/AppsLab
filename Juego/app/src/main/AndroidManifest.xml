@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EjemploJuegoPiratas">
 
-        <activity android:name=".JuegoFutsnakeball"
+        <activity android:name="com.ldm.futsnakeball.juego.JuegoFutsnakeball"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
