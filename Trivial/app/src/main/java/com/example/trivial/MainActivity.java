@@ -143,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @SuppressLint("SdCardPath")
     private boolean checkDataBase() {
         SQLiteDatabase checkDB = null;
         try {

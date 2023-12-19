@@ -15,26 +15,24 @@ public class DbQuestions extends DatabaseHelper{
         this.context = context;
     }
 
-    public void insertData (String question, String optionsText, String optionsImage, int correctAnswer){
-        try{
+    public void insertData(String question, String optionsText, String optionsImage, int correctAnswer) {
+        try {
+            SQLiteDatabase db = getWritableDatabase();
 
-            SQLiteDatabase db;
-            try (DatabaseHelper dbHelper = new DatabaseHelper(context)) {
-                db = dbHelper.getWritableDatabase();
-            }
-
-            ContentValues values  = new ContentValues();
+            ContentValues values = new ContentValues();
             values.put(COLUMN_QUESTION, question);
             values.put(COLUMN_OPTIONS_TEXT, optionsText);
             values.put(COLUMN_OPTIONS_IMAGES, optionsImage);
             values.put(COLUMN_CORRECT_ANSWER, correctAnswer);
 
             db.insert(TABLE_NAME, null, values);
+            db.close();  // Asegúrate de cerrar la base de datos después de usarla.
 
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
+
 
     public ArrayList<Question> getQuestionsList(){
         DatabaseHelper dbHelper = new DatabaseHelper(context);
