@@ -1,0 +1,65 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
+
+    <ToggleButton
+        android:id="@+id/buttonSound1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOn="@string/pausar_sonido"
+        android:textOff="Pajaros"
+        android:drawableTop="@raw/pajaros"
+        android:background="@drawable/toggle_color"
+        android:layout_marginBottom="16dp" />
+
+    <ToggleButton
+        android:id="@+id/buttonSound2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOn="@string/pausar_sonido"
+        android:textOff="Lluvia"
+        android:drawableTop="@raw/lluvia"
+        android:background="@drawable/toggle_color"
+        android:layout_marginBottom="16dp" />
+
+    <ToggleButton
+        android:id="@+id/buttonSound3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOn="@string/pausar_sonido"
+        android:textOff="Musica"
+        android:drawableTop="@raw/musica"
+        android:background="@drawable/toggle_color"
+        android:layout_marginBottom="16dp" />
+
+    <ToggleButton
+        android:id="@+id/buttonSound4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOn="@string/pausar_sonido"
+        android:textOff="Olas de mar"
+        android:drawableTop="@raw/olas_de_mar"
+        android:background="@drawable/toggle_color"
+        android:layout_marginBottom="16dp" />
+
+    <ToggleButton
+        android:id="@+id/buttonSound5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOn="@string/pausar_sonido"
+        android:textOff="Cascada"
+        android:drawableTop="@raw/cascada"
+        android:background="@drawable/toggle_color"
+        android:layout_marginBottom="16dp" />
+
+    <ImageView
+
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="113dp" />
+
+
+</LinearLayout>

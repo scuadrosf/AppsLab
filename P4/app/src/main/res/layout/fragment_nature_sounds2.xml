@@ -1,0 +1,66 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
+
+    <ToggleButton
+        android:id="@+id/buttonSound6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOn="@string/pausar_sonido"
+        android:textOff="Fuego"
+        android:drawableTop="@raw/fuego"
+        android:background="@drawable/toggle_color"
+        android:layout_marginBottom="16dp" />
+
+    <ToggleButton
+        android:id="@+id/buttonSound7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOn="@string/pausar_sonido"
+        android:textOff="Tormenta"
+        android:drawableTop="@raw/tormenta"
+        android:background="@drawable/toggle_color"
+        android:layout_marginBottom="16dp" />
+
+    <ToggleButton
+        android:id="@+id/buttonSound8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOn="@string/pausar_sonido"
+        android:textOff="Piano"
+        android:drawableTop="@raw/piano"
+        android:background="@drawable/toggle_color"
+        android:layout_marginBottom="16dp" />
+
+    <ToggleButton
+        android:id="@+id/buttonSound9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOn="@string/pausar_sonido"
+        android:textOff="Riachuelo"
+        android:drawableTop="@raw/riachuelo"
+        android:background="@drawable/toggle_color"
+        android:layout_marginBottom="16dp" />
+
+    <ToggleButton
+        android:id="@+id/buttonSound10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOn="@string/pausar_sonido"
+        android:textOff="Ballenas"
+        android:drawableTop="@raw/ballenas"
+        android:background="@drawable/toggle_color"
+        android:layout_marginBottom="16dp" />
+
+    <ImageView
+
+        android:id="@+id/imageView2"
+        android:layout_width="200dp"
+        android:layout_height="113dp" />
+
+
+
+</LinearLayout>

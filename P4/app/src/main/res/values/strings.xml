@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">MindRelax</string>
+    <string name="mindrelax">MindRelax</string>
+    <string name="icono">icono</string>
+    <string name="meditaci_n">Meditación</string>
+    <string name="sonidos_de_naturaleza">Sonidos de naturaleza</string>
+    <string name="ejercicios_de_respiraci_n">Ejercicios de respiración</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="ayuda">ayuda</string>
+    <string name="pausar_sonido">Pausar sonido</string>
+    <string name="reproducir_sonido">Reproducir sonido</string>
+
+    <string name="meditation_title">Meditación: Pasos y Recomendaciones</string>
+    <string name="step_1_description">1. Encuentra un lugar tranquilo que consideres tu espacio personal de calma.</string>
+    <string name="step_2_description">2. Elige una postura cómoda, ya sea sentado con las piernas cruzadas o en una silla con los pies en el suelo.</string>
+    <string name="step_3_description">3. Establece un tiempo límite, especialmente si eres principiante. Comienza con 5 o 10 minutos.</string>
+    <string name="step_4_description">4. Cierra los ojos o baja la mirada para evitar distracciones externas.</string>
+    <string name="step_5_description">5. Concéntrate en tu respiración, nota cómo el aire entra y sale de tu cuerpo.</string>
+    <string name="step_6_description">6. Si tu mente divaga, suavemente redirige tu atención de vuelta a tu respiración.</string>
+    <string name="step_7_description">7. Explora la quietud, si surgen pensamientos, acéptalos y déjalos pasar sin juzgar.</string>
+    <string name="step_8_description">8. Lleva tu atención a las sensaciones físicasdel cuerpo, como el contacto con el suelo o la silla, sin cambiar tu posición.</string>
+    <string name="step_9_description">9. Finaliza tu sesión lentamente. Abre tus ojos o levanta la mirada, toma un momento para notar cualquier sonido en el entorno, siente tu cuerpo y tus pensamientos.</string>
+    <string name="step_10_description">10. Practica la gratitud después de cada sesión. Reflexiona sobre la experiencia de meditación y agradece el tiempo dedicado a tu bienestar.</string>
+    <string name="boton_de_volver_atras">Boton de volver atras</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
