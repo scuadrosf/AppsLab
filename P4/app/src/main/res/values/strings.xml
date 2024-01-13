@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">MindRelax</string>
     <string name="mindrelax">MindRelax</string>
     <string name="icono">icono</string>
@@ -14,12 +14,12 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="ayuda">ayuda</string>
+    <string name="ayuda">Ayuda</string>
     <string name="pausar_sonido">Pausar sonido</string>
     <string name="reproducir_sonido">Reproducir sonido</string>
 
     <string name="meditation_title">Meditación: Pasos y Recomendaciones</string>
-    <string name="step_1_description">1. Encuentra un lugar tranquilo que consideres tu espacio personal de calma.</string>
+    <string name="step_1_description" tools:ignore="Typos">1. Encuentra un lugar tranquilo que consideres tu espacio personal de calma.</string>
     <string name="step_2_description">2. Elige una postura cómoda, ya sea sentado con las piernas cruzadas o en una silla con los pies en el suelo.</string>
     <string name="step_3_description">3. Establece un tiempo límite, especialmente si eres principiante. Comienza con 5 o 10 minutos.</string>
     <string name="step_4_description">4. Cierra los ojos o baja la mirada para evitar distracciones externas.</string>
@@ -27,7 +27,7 @@
     <string name="step_6_description">6. Si tu mente divaga, suavemente redirige tu atención de vuelta a tu respiración.</string>
     <string name="step_7_description">7. Explora la quietud, si surgen pensamientos, acéptalos y déjalos pasar sin juzgar.</string>
     <string name="step_8_description">8. Lleva tu atención a las sensaciones físicasdel cuerpo, como el contacto con el suelo o la silla, sin cambiar tu posición.</string>
-    <string name="step_9_description">9. Finaliza tu sesión lentamente. Abre tus ojos o levanta la mirada, toma un momento para notar cualquier sonido en el entorno, siente tu cuerpo y tus pensamientos.</string>
+    <string name="step_9_description" tools:ignore="Typos">9. Finaliza tu sesión lentamente. Abre tus ojos o levanta la mirada, toma un momento para notar cualquier sonido en el entorno, siente tu cuerpo y tus pensamientos.</string>
     <string name="step_10_description">10. Practica la gratitud después de cada sesión. Reflexiona sobre la experiencia de meditación y agradece el tiempo dedicado a tu bienestar.</string>
     <string name="boton_de_volver_atras">Boton de volver atras</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -36,4 +36,12 @@
     <string name="pausar">pausar</string>
     <string name="instrucciones_de_respiraci_n">Instrucciones de Respiración...</string>
     <string name="detalles_a_tener_en_cuenta_en_el_ejercicio_de_respiraci_n">Detalles a tener en cuenta en el ejercicio de respiración</string>
+    <string name="contenido_help">La aplicación consiste en tres métodos para poder relajarse de forma activa. Tenemos la meditación donde
+    mediante un sonido de fondo podremos aplicar nuestras técnicas de relajación. Sonidos de naturaleza, si nuestro sistema nervioso se calma con los
+    sonido de naturaleza como por ejemplo pájaros, olas o fuego. Y por último ejercicios de respiración, en esta seccion se detallarán unos procesos
+    que es conveniente seguir para realizarlo de forma óptima, además de un audio de voz activa en el que se irá realizando el ejercicio.
+
+    ¡A DISFRUTAR! </string>
+    <string name="instrucciones">Instrucciones</string>
+    <string name="cerrar">Cerrar</string>
 </resources>
