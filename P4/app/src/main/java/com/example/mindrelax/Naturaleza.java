@@ -19,6 +19,7 @@ public class Naturaleza extends AppCompatActivity {
 
         ImageButton btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
+            pauseFragmentSounds();
             Intent intent = new Intent(Naturaleza.this, MainActivity.class);
             startActivity(intent);
         });
@@ -28,6 +29,20 @@ public class Naturaleza extends AppCompatActivity {
                     .add(R.id.fragmentContainer1, new NatureSoundsFragment1())
                     .add(R.id.fragmentContainer2, new NatureSoundsFragment2())
                     .commit();
+        }
+    }
+
+    private void pauseFragmentSounds(){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        NatureSoundsFragment1 fragment1 = (NatureSoundsFragment1) fragmentManager.findFragmentById(R.id
+                .fragmentContainer1);
+        if (fragment1 != null) {
+            fragment1.pauseAllSounds();
+        }
+        NatureSoundsFragment2 fragment2 = (NatureSoundsFragment2) fragmentManager.findFragmentById(R.id.fragmentContainer2);
+        if (fragment2 != null) {
+            fragment2.pauseAllSounds();
         }
     }
 }

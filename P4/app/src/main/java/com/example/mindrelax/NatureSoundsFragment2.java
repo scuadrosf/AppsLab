@@ -2,29 +2,28 @@ package com.example.mindrelax;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ToggleButton;
 import android.widget.ImageView;
+import android.widget.ToggleButton;
+
+import androidx.fragment.app.Fragment;
 
 public class NatureSoundsFragment2 extends Fragment {
 
     // Array de MediaPlayers para manejar múltiples sonidos
-    private MediaPlayer[] mediaPlayers = new MediaPlayer[5];
-    // Array de IDs de los archivos de sonido raw
-    private int[] soundResIds = new int[]{
+    private final MediaPlayer[] mediaPlayers = new MediaPlayer[5];
+    // Array de IDs de los archivos de sonido
+    private final int[] soundResIds = new int[]{
             R.raw.fuego, R.raw.tormenta, R.raw.piano, R.raw.riachuelo, R.raw.ballenas
     };
     // Array de IDs de los botones
-    private int[] buttonIds = new int[]{
+    private final int[] buttonIds = new int[]{
             R.id.buttonSound6, R.id.buttonSound7, R.id.buttonSound8, R.id.buttonSound9, R.id.buttonSound10
     };
-    // Array de IDs de las imágenes
-    private int[] imageResIds = new int[]{
+    // Array de IDs de las imágenes d los sonidos
+    private final int[] imageResIds = new int[]{
             R.drawable.fuego, R.drawable.tormenta, R.drawable.piano, R.drawable.riachuelo, R.drawable.ballena
     };
 
@@ -33,7 +32,7 @@ public class NatureSoundsFragment2 extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_nature_sounds2, container, false);
 
-        // Inicializa los MediaPlayers y los ToggleButtons
+        // Inicializar los MediaPlayers y los ToggleButtons
         for (int i = 0; i < buttonIds.length; i++) {
             mediaPlayers[i] = MediaPlayer.create(getContext(), soundResIds[i]);
             ToggleButton toggleButton = view.findViewById(buttonIds[i]);
@@ -55,7 +54,6 @@ public class NatureSoundsFragment2 extends Fragment {
         for (int i = 0; i < mediaPlayers.length; i++) {
             if (i != index && mediaPlayers[i].isPlaying()) {
                 mediaPlayers[i].pause();
-                // Resetea el estado de los otros botones si es necesario
             }
         }
         // Iniciar el sonido seleccionado
@@ -72,17 +70,23 @@ public class NatureSoundsFragment2 extends Fragment {
         if (player.isPlaying()) {
             player.pause();
         }
-        hideImage(index);
+        hideImage();
     }
-
+    public void pauseAllSounds() {
+        for (MediaPlayer mp : mediaPlayers) {
+            if (mp != null && mp.isPlaying()) {
+                mp.pause();
+            }
+        }
+    }
     private void showImage(int index) {
-        ImageView imageView = getActivity().findViewById(R.id.imageView2);
+        ImageView imageView = requireActivity().findViewById(R.id.imageView2);
         imageView.setImageResource(imageResIds[index]);
         imageView.setVisibility(View.VISIBLE);
     }
 
-    private void hideImage(int index) {
-        ImageView imageView = getActivity().findViewById(R.id.imageView2);
+    private void hideImage() {
+        ImageView imageView = requireActivity().findViewById(R.id.imageView2);
         imageView.setVisibility(View.GONE);
     }
 

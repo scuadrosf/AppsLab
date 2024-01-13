@@ -26,6 +26,7 @@ public class Meditacion extends AppCompatActivity {
 
         ImageButton btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
+            stopPlayingSound();
             Intent intent = new Intent(Meditacion.this, MainActivity.class);
             startActivity(intent);
         });
@@ -60,7 +61,7 @@ public class Meditacion extends AppCompatActivity {
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             stepTextView.setText(step);
             stepTextView.setTextSize(18);
-            // Puedes personalizar más las TextViews aquí como quieras
+            stepTextView.setTextColor(getColor(R.color.black));
 
             layoutSteps.addView(stepTextView);
         }
