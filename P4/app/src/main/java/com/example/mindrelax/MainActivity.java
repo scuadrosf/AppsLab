@@ -17,9 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        // Si tu Activity ya tiene una ActionBar por defecto, ocúltala.
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayShowTitleEnabled(false); // Opcional: desactivar el título predeterminado
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
 
         Button buttonMeditation = findViewById(R.id.buttonMeditation);
