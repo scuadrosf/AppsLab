@@ -5,6 +5,16 @@
     android:padding="16dp"
     android:background="@color/color_arena">
 
+    <ImageButton
+        android:id="@id/btnBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/boton_de_volver_atras"
+        android:src="@drawable/volver_flecha" />
+
     <TextView
         android:id="@+id/usernameTextView"
         android:layout_width="wrap_content"

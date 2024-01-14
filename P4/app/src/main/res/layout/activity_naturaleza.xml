@@ -1,33 +1,48 @@
-<!-- activity_nature_sounds.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/naturaleza">
 
-    <FrameLayout
-        android:id="@+id/fragmentContainer1"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/titleNatureSounds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sonidos_de_naturaleza"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1" >
+        android:orientation="horizontal"
+        android:paddingTop="16dp"
+        android:baselineAligned="false">
 
-        <ImageButton
-            android:id="@+id/btnBack"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/boton_de_volver_atras"
-            android:src="@drawable/volver_flecha" />
-    </FrameLayout>
+        <FrameLayout
+            android:id="@+id/fragmentContainer1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
 
-    <FrameLayout
-        android:id="@+id/fragmentContainer2"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/boton_de_volver_atras"
+                android:src="@drawable/volver_flecha" />
+        </FrameLayout>
 
-</LinearLayout>
+        <FrameLayout
+            android:id="@+id/fragmentContainer2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+</RelativeLayout>
