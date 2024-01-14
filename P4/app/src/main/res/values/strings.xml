@@ -52,4 +52,15 @@
     <string name="perfil">Perfil</string>
     <string name="cambiar_contrase_a">Cambiar contraseña</string>
     <string name="nueva_contrase_a">Nueva contraseña</string>
+    <string name="pajaros">Pajaros</string>
+    <string name="lluvia">Lluvia</string>
+    <string name="musica">Musica</string>
+    <string name="olas_de_mar">Olas de mar</string>
+    <string name="cascada">Cascada</string>
+    <string name="imagen_del_sonido">Imagen del sonido</string>
+    <string name="fuego">Fuego</string>
+    <string name="tormenta">Tormenta</string>
+    <string name="piano">Piano</string>
+    <string name="riachuelo">Riachuelo</string>
+    <string name="ballenas">Ballenas</string>
 </resources>

@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textOn="@string/pausar_sonido"
-        android:textOff="Fuego"
+        android:textOff="@string/fuego"
         android:drawableTop="@raw/fuego"
         android:background="@drawable/toggle_color"
         android:layout_marginBottom="16dp" />
@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textOn="@string/pausar_sonido"
-        android:textOff="Tormenta"
+        android:textOff="@string/tormenta"
         android:drawableTop="@raw/tormenta"
         android:background="@drawable/toggle_color"
         android:layout_marginBottom="16dp" />
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textOn="@string/pausar_sonido"
-        android:textOff="Piano"
+        android:textOff="@string/piano"
         android:drawableTop="@raw/piano"
         android:background="@drawable/toggle_color"
         android:layout_marginBottom="16dp" />
@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textOn="@string/pausar_sonido"
-        android:textOff="Riachuelo"
+        android:textOff="@string/riachuelo"
         android:drawableTop="@raw/riachuelo"
         android:background="@drawable/toggle_color"
         android:layout_marginBottom="16dp" />
@@ -50,16 +50,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textOn="@string/pausar_sonido"
-        android:textOff="Ballenas"
+        android:textOff="@string/ballenas"
         android:drawableTop="@raw/ballenas"
         android:background="@drawable/toggle_color"
         android:layout_marginBottom="16dp" />
 
     <ImageView
-
         android:id="@+id/imageView2"
         android:layout_width="200dp"
-        android:layout_height="113dp" />
+        android:layout_height="113dp"
+        android:contentDescription="@string/imagen_del_sonido" />
 
 
 
