@@ -25,7 +25,7 @@ public class Profile extends AppCompatActivity {
 
         SharedPreferences preferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         String username = preferences.getString("Username", "Usuario no encontrado");
-        usernameTextView.setText(username); // Establecer el nombre de usuario en el TextView
+        usernameTextView.setText(username);
 
         changePasswordButton.setOnClickListener(v -> {
             changePassword();

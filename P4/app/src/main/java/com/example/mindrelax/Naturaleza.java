@@ -34,9 +34,7 @@ public class Naturaleza extends AppCompatActivity {
 
     private void pauseFragmentSounds(){
         FragmentManager fragmentManager = getSupportFragmentManager();
-
-        NatureSoundsFragment1 fragment1 = (NatureSoundsFragment1) fragmentManager.findFragmentById(R.id
-                .fragmentContainer1);
+        NatureSoundsFragment1 fragment1 = (NatureSoundsFragment1) fragmentManager.findFragmentById(R.id.fragmentContainer1);
         if (fragment1 != null) {
             fragment1.pauseAllSounds();
         }

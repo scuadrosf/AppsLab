@@ -28,18 +28,16 @@ public class Respiracion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_respiracion);
 
-        // Inicialización de componentes de la UI
         ImageButton backButton = findViewById(R.id.btnBack);
         ImageButton playButton = findViewById(R.id.playButton);
         ImageButton pauseButton = findViewById(R.id.pauseButton);
         ImageButton forwardButton = findViewById(R.id.forwardButton);
         ImageButton backwardButton = findViewById(R.id.backwardButton);
 
-        // Configurar MediaPlayer
         mediaPlayer = MediaPlayer.create(this, R.raw.relajacion);
         seekBar = findViewById(R.id.seekBar);
         seekBar.setMax(mediaPlayer.getDuration());
-        // Actualiza el SeekBar conforme avanza el sonido
+        // Actualiza el SeekBar con el sonido
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -70,7 +68,6 @@ public class Respiracion extends AppCompatActivity {
             }
         });
 
-        // Configurar botones
         playButton.setOnClickListener(v -> mediaPlayer.start());
         pauseButton.setOnClickListener(v -> mediaPlayer.pause());
         forwardButton.setOnClickListener(v -> mediaPlayer.seekTo(mediaPlayer.getCurrentPosition() + 10000)); // Avanza 10 segundos

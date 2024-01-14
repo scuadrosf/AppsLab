@@ -66,7 +66,6 @@ public class Meditacion extends AppCompatActivity {
             layoutSteps.addView(stepTextView);
         }
     }
-
     private void startPlayingSound() {
         if (mediaPlayer == null) {
             mediaPlayer = MediaPlayer.create(this, R.raw.meditacion);
@@ -74,13 +73,11 @@ public class Meditacion extends AppCompatActivity {
         }
         mediaPlayer.start();
     }
-
     private void stopPlayingSound() {
         if (mediaPlayer != null && mediaPlayer.isPlaying()) {
             mediaPlayer.pause();
         }
     }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();

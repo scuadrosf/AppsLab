@@ -8,11 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    // Constantes para el nombre de la base de datos y la versión
     private static final String DATABASE_NAME = "UserDatabase";
     private static final int DATABASE_VERSION = 1;
-
-    // Constantes para el nombre de la tabla y las columnas
     private static final String TABLE_USERS = "users";
     private static final String COLUMN_USER_ID = "user_id";
     private static final String COLUMN_USER_NAME = "username";
@@ -36,23 +33,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Eliminar tabla si existía
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
-        // Crear tabla nuevamente
         onCreate(db);
     }
 
-    // Método para insertar un nuevo usuario
     public void addUser(String username, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_USER_NAME, username);
         values.put(COLUMN_USER_PASSWORD, password);
-
         // Insertar fila
         db.insert(TABLE_USERS, null, values);
-        db.close(); // Cerrar conexión a la base de datos
+        db.close();
     }
 
-    // Método para verificar el usuario y la contraseña
     public boolean checkUser(String username, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = {COLUMN_USER_ID};
@@ -77,8 +70,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void updateUserPassword(String username, String newPassword) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("password", newPassword); // Asume que tu columna de contraseña se llama "password"
-        db.update("users", values, "username = ?", new String[]{username}); // Asume que tu columna de nombre de usuario se llama "username"
+        values.put("password", newPassword);
+        db.update("users", values, "username = ?", new String[]{username});
         db.close();
     }
 }

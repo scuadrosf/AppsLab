@@ -16,7 +16,7 @@ public class Help extends AppCompatActivity {
         TextView helpTextView = findViewById(R.id.helpText);
         Button closeHelpButton = findViewById(R.id.closeHelpButton);
 
-        String helpText = getString(R.string.contenido_help); // Define un string largo en strings.xml
+        String helpText = getString(R.string.contenido_help);
         helpTextView.setTextColor(getColor(R.color.black));
         helpTextView.setTextSize(18);
         helpTextView.setText(helpText);

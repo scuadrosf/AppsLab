@@ -12,17 +12,13 @@ import androidx.fragment.app.Fragment;
 
 public class NatureSoundsFragment2 extends Fragment {
 
-    // Array de MediaPlayers para manejar múltiples sonidos
     private final MediaPlayer[] mediaPlayers = new MediaPlayer[5];
-    // Array de IDs de los archivos de sonido
     private final int[] soundResIds = new int[]{
             R.raw.fuego, R.raw.tormenta, R.raw.piano, R.raw.riachuelo, R.raw.ballenas
     };
-    // Array de IDs de los botones
     private final int[] buttonIds = new int[]{
             R.id.buttonSound6, R.id.buttonSound7, R.id.buttonSound8, R.id.buttonSound9, R.id.buttonSound10
     };
-    // Array de IDs de las imágenes d los sonidos
     private final int[] imageResIds = new int[]{
             R.drawable.fuego, R.drawable.tormenta, R.drawable.piano, R.drawable.riachuelo, R.drawable.ballena
     };
@@ -31,8 +27,6 @@ public class NatureSoundsFragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_nature_sounds2, container, false);
-
-        // Inicializar los MediaPlayers y los ToggleButtons
         for (int i = 0; i < buttonIds.length; i++) {
             mediaPlayers[i] = MediaPlayer.create(getContext(), soundResIds[i]);
             ToggleButton toggleButton = view.findViewById(buttonIds[i]);
@@ -45,7 +39,6 @@ public class NatureSoundsFragment2 extends Fragment {
                 }
             });
         }
-
         return view;
     }
 
@@ -84,17 +77,13 @@ public class NatureSoundsFragment2 extends Fragment {
         imageView.setImageResource(imageResIds[index]);
         imageView.setVisibility(View.VISIBLE);
     }
-
     private void hideImage() {
         ImageView imageView = requireActivity().findViewById(R.id.imageView2);
         imageView.setVisibility(View.GONE);
     }
-
-
     @Override
     public void onDestroy() {
         super.onDestroy();
-        // Liberar los recursos de los MediaPlayers
         for (MediaPlayer mp : mediaPlayers) {
             if (mp != null) {
                 if (mp.isPlaying()) {

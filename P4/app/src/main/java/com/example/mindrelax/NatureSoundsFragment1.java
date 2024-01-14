@@ -51,7 +51,6 @@ public class NatureSoundsFragment1 extends Fragment {
         for (int i = 0; i < mediaPlayers.length; i++) {
             if (i != index && mediaPlayers[i].isPlaying()) {
                 mediaPlayers[i].pause();
-                // Resetea el estado de los otros botones si es necesario
             }
         }
         // Iniciar el sonido seleccionado
@@ -93,7 +92,6 @@ public class NatureSoundsFragment1 extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        // Liberar los recursos de los MediaPlayers
         for (MediaPlayer mp : mediaPlayers) {
             if (mp != null) {
                 if (mp.isPlaying()) {
