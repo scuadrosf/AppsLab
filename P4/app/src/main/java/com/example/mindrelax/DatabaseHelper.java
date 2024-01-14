@@ -71,10 +71,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
 
-        if (cursorCount > 0) {
-            return true;
-        }
+        return cursorCount > 0;
+    }
 
-        return false;
+    public void updateUserPassword(String username, String newPassword) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("password", newPassword); // Asume que tu columna de contraseña se llama "password"
+        db.update("users", values, "username = ?", new String[]{username}); // Asume que tu columna de nombre de usuario se llama "username"
+        db.close();
     }
 }

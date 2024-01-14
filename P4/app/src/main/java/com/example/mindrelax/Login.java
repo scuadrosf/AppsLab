@@ -3,6 +3,7 @@ package com.example.mindrelax;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +31,12 @@ public class Login extends AppCompatActivity {
             if (databaseHelper.checkUser(username, password)){
                 // Usuario existe y la contraseña es correcta, iniciar sesión
                 Toast.makeText(Login.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
+
+                SharedPreferences preferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("Username", username);
+                editor.apply();
+
                  Intent intent = new Intent(Login.this, MainActivity.class);
                  startActivity(intent);
             } else {

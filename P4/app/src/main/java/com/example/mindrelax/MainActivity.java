@@ -3,6 +3,7 @@ package com.example.mindrelax;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +25,18 @@ public class MainActivity extends AppCompatActivity {
         Button buttonMeditation = findViewById(R.id.buttonMeditation);
         Button buttonNatureSounds = findViewById(R.id.buttonNatureSounds);
         Button buttonBreathingExercises = findViewById(R.id.buttonBreathingExercises);
+        ImageButton logoutButton = findViewById(R.id.logoutButton);
+        ImageButton profileButton = findViewById(R.id.profileButton);
+
+        logoutButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, Login.class);
+            startActivity(intent);
+        });
+
+        profileButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, Profile.class);
+            startActivity(intent);
+        });
 
         buttonMeditation.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, Meditacion.class);

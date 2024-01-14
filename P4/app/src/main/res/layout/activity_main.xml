@@ -101,5 +101,31 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+    <ImageButton
+        android:id="@+id/profileButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="68dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/perfil"
+        android:elevation="10dp"
+        android:src="@drawable/avatar" />
+
+    <ImageButton
+        android:id="@+id/logoutButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/cerrar_sesion"
+    android:contentDescription="@string/cerrar_sesion"
+    android:background="?android:attr/selectableItemBackgroundBorderless"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentEnd="true"
+    android:layout_marginBottom="16dp"
+    android:layout_marginEnd="16dp" />
+
+
 
 </RelativeLayout>
