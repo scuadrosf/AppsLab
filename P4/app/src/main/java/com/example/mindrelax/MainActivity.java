@@ -1,5 +1,7 @@
 package com.example.mindrelax;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -9,12 +11,19 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        LottieAnimationView lottieMeditation = findViewById(R.id.lottieAnimationMeditation);
+        LottieAnimationView lottieNature = findViewById(R.id.lottieAnimationNatureSounds);
+        LottieAnimationView lottieBreathing = findViewById(R.id.lottieAnimationBreathingExercises);
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -39,18 +48,36 @@ public class MainActivity extends AppCompatActivity {
         });
 
         buttonMeditation.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, Meditacion.class);
-            startActivity(intent);
+            lottieMeditation.playAnimation();
+            lottieMeditation.addAnimatorListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    Intent intent = new Intent(MainActivity.this, Meditacion.class);
+                    startActivity(intent);
+                }
+            });
         });
 
         buttonNatureSounds.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, Naturaleza.class);
-            startActivity(intent);
+            lottieNature.playAnimation();
+            lottieNature.addAnimatorListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    Intent intent = new Intent(MainActivity.this, Naturaleza.class);
+                    startActivity(intent);
+                }
+            });
         });
 
         buttonBreathingExercises.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, Respiracion.class);
-            startActivity(intent);
+            lottieBreathing.playAnimation();
+            lottieBreathing.addAnimatorListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    Intent intent = new Intent(MainActivity.this, Respiracion.class);
+                    startActivity(intent);
+                }
+            });
         });
 
         ImageView imageViewAdditional = findViewById(R.id.ayudar);
